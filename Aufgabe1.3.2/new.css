@@ -10,7 +10,7 @@
 }
 
 .main {   
-    -ms-flex: 70%; /* IE10 */
+    -ms-flex: 70%;
     flex: 70%;
     background-color: white;
     padding: 20px;
@@ -18,7 +18,7 @@
 }
 
 .side {
-    -ms-flex: 30%; /* IE10 */
+    -ms-flex: 30%;
     flex: 30%;
     background-color: #f1f1f1;
     padding: 20px;
@@ -26,9 +26,9 @@
 }
 
 .row {  
-    display: -ms-flexbox; /* IE10 */
+    display: -ms-flexbox; 
     display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
+    -ms-flex-wrap: wrap; 
     flex-wrap: wrap;
 }
 
@@ -87,9 +87,9 @@ body {
 .btn {
     transition-duration: 0.6s;
     background-color: transparent;
-    border: none; /* Remove borders */
-    font-size: 32x; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    border: none; /* ränder gelöscht */
+    font-size: 32x; /* schriftgröße */
+    cursor: pointer; /* maus wird zum pointer beim drübergehen */
     opacity: 60%;
     border-radius: 100%;
 }
@@ -102,9 +102,9 @@ body {
 .btn2 {
     transition-duration: 0.6s;
     background-color: transparent;
-    border: none; /* Remove borders */
-    font-size: 32x; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    border: none; /* ränder gelöscht */
+    font-size: 32x; /* schriftgröße */
+    cursor: pointer; /* maus wird zum pointer beim drübergehen */
     opacity: 60%;
     border-radius: 100%;
     position: static;
@@ -118,9 +118,9 @@ body {
 .btn3 {
     transition-duration: 0.6s;
     background-color: transparent;
-    border: none; /* Remove borders */
-    font-size: 32x; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    border: none; /* ränder gelöscht */
+    font-size: 32x; /* schriftgröße */
+    cursor: pointer; /* maus wird zum pointer beim drübergehen */
     opacity: 60%;
     border-radius: 100%;
 }
