@@ -2,7 +2,7 @@
 <html lang="de">
 
 <head>
-    <link rel="stylesheet" href="../Aufgabe1.3.2/stylesheet.css">
+    <link rel="stylesheet" href="new.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +10,24 @@
 </head>
 
 <body>
-    <div class="website">
-        <div class="sticky">
-            <ul class="navbar">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./index1.html">Portfolio</a></li>
-                <li><a class="current" href="./index2.html">About</a></li>
-                <li><a href="./index3.html">Kontakt</a></li>
-            </ul>
-        </div>
+    <div class="header">
         <h1>About me</h1>
-        <div>
-            <p><code>This page is about me!</code></p>
+        <p>Some text <b>About me</b></p>
+    </div>
+    <div class="navbar">
+        <a href="./index.html">Home</a>
+        <a href="./index1.html">Portfolio</a>
+        <a href="./index2.html" class="active">About</a>
+        <a href="./index3.html">Contact</a>
+    </div>
+    <div class="row">
+        <div class="side">
+            <h1>About me</h1>
+
+            <p><code><h2>Photo of me:</h2></code></p>
+            <div class="selfie"><img src="images/selfieerdem.png" alt="this will appear if the images cannot be found">
+            </div>
+
             <button type="button" onclick="alert('Habs dir gesagt.')">Ich habe keine relevante funktion.</button>
 
             <p id="idref">Mein Name ist <cite>Erdem Aktas</cite>, bin 23 Jahre jung und bin derzeit
@@ -29,9 +35,10 @@
             <aside>
                 Meine Eltern kommen aus der Türkei, ich selber bin in Deutschland geboren.
             </aside>
+        </div>
 
-
-            <p>hier die gleiche musik von vorher</p>
+        <div class="main">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             <audio controls>
                 <source src="audios/Megalovania_remix.mp3" type="audio/mp3">
                 Your browser does not support the audio tag.
@@ -42,6 +49,9 @@
                 <source src="videos/pig_video.mp4" type="video/mp4">
             </video>
         </div>
+    </div>
+    <div class="footer">
+        <h2>Footer</h2>
     </div>
 </body>
 

@@ -2,72 +2,134 @@
 <html lang="de">
 
 <head>
-    <link rel="stylesheet" href="../Aufgabe1.3.2/stylesheet.css">
+    <link rel="stylesheet" href="new.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt</title>
+    <title>Contact</title>
 </head>
 
 <body>
-    <div class="website">
-        <div class="sticky">
-            <ul class="navbar">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./index1.html">Portfolio</a></li>
-                <li><a href="./index2.html">About</a></li>
-                <li><a class="current" href="./index3.html">Kontakt</a></li>
-            </ul>
-        </div>
-            <h1>Kontakt</h1>
-            <a href="https://www.twitch.tv/osukaylan">
-                <button class="btn3"><img class="twitch" src="./images/twitch.png" alt=""></i></button>
-            </a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="https://www.youtube.com/osukaylan">
-                <button class="btn2"><img class="youtube" src="./images/youtube.png" alt=""></i></button>
-            </a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>Mehr habe ich nicht :D <br>
-                Aber weils so schön war, hier noch mal ein knopf.<br>
-                <button type="button" onclick="alert('Habs dir gesagt.')">Trau dich 😐.</button><br>
-                Meine monatlichen Ausgaben waren doch sicherlich aus sehr interresant oder? Hier nochmal.
-            </p>
-            <table>
-                <caption>Monatliche ausgaben</caption>
-                <tr>
-                    <th>Monat</th>
-                    <th>Ausgaben</th>
-                </tr>
-                <tr>
-                    <td>Januar</td>
-                    <td>€100</td>
-                </tr>
-                <tr>
-                    <td>Februar</td>
-                    <td>€50</td>
-                </tr>
-            </table><br>
-            <dl>
-                <dt>Kaffee</dt>
-                <dd><kbd>+ wenig Milch und kein Zucker</kbd></dd>
-            </dl>
-            <label for="mood">Wie geht es ihnen?:</label>
-
-            <select id="mood">
-                <option value="gut">Gut</option>
-                <option value="schlecht">Schlecht</option>
-            </select><br>
-            <br>
-
-        </div>
+    <div class="header">
+        <h1>Portfolio</h1>
+        <p>This is my <b>Portfolio</b></p>
     </div>
+    <div class="navbar">
+        <a href="./index.html">Home</a>
+        <a href="./index1.html">Portfolio</a>
+        <a href="./index2.html">About</a>
+        <a href="./index3.html" class="active">Contact</a>
+    </div>
+    <div class="row">
+        <div class="side">
+            <h1>Contact</h1>
+
+            <a href="https://www.twitch.tv/osukaylan">
+                <button class="btn3"><img class="twitch" src="./images/twitch.png" alt=""></i></button></a>
+
+            <a href="https://www.youtube.com/osukaylan">
+                <button class="btn2"><img class="youtube" src="./images/youtube.png" alt=""></i></button></a>
+
+            <p>Mehr habe ich nicht :D <br>
+                Aber weils so schön war, hier noch mal ein knopf.<br></p>
+            <button type="button" onclick="alert('Habs dir gesagt.')">Trau dich 😐.</button><br>
+            <div>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis dicta repellat obcaecati ipsa
+                    natus non expedita doloribus perferendis totam reiciendis.</p>
+                <table>
+                    <caption>Monatliche ausgaben</caption>
+                    <tr>
+                        <th>Monat</th>
+                        <th>Ausgaben</th>
+                    </tr>
+                    <tr>
+                        <td>Januar</td>
+                        <td>€100</td>
+                    </tr>
+                    <tr>
+                        <td>Februar</td>
+                        <td>€50</td>
+                    </tr>
+                </table><br>
+            </div>
+        </div>
+        <div class="main">
+            <div>
+                <br>
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis dicta repellat obcaecati ipsa
+                    natus non expedita doloribus perferendis totam reiciendis.</p>
+                <table>
+                    <caption>Monatliche ausgaben</caption>
+                    <tr>
+                        <th>Monat</th>
+                        <th>Ausgaben</th>
+                    </tr>
+                    <tr>
+                        <td>Januar</td>
+                        <td>€100</td>
+                    </tr>
+                    <tr>
+                        <td>Februar</td>
+                        <td>€50</td>
+                    </tr>
+                </table><br>
+                <dl>
+                    <dt>Kaffee</dt>
+                    <dd><kbd>+ wenig Milch und kein Zucker</kbd></dd>
+                </dl>
+                <label for="mood">Wie geht es ihnen?:</label>
+
+                <select id="mood">
+                    <option value="gut">Gut</option>
+                    <option value="schlecht">Schlecht</option>
+                </select>
+            </div>
+        
+            <div class="container">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">First Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Last Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="email" name="E-Mail" placeholder="Your E-Mail..">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="subject" name="subject" placeholder="Write something.."
+                        style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+            </form>
+            </div>
+        </div>
+        <div class="footer">
+            <h2>Footer</h2>
+        </div>
 </body>
 
 </html>

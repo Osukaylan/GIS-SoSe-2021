@@ -2,8 +2,7 @@
 <html lang="de">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../Aufgabe1.3.2/stylesheet.css">
+    <link rel="stylesheet" href="new.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +10,18 @@
 </head>
 
 <body>
-    <div class="website">
-        <div class="sticky">
-            <ul class="navbar">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./index1.html" class="current">Portfolio</a></li>
-                <li><a href="./index2.html">About</a></li>
-                <li><a href="./index3.html">Kontakt</a></li>
-            </ul>
-        </div>
-
+    <div class="header">
+        <h1>Portfolio</h1>
+        <p>This is my <b>Portfolio</b></p>
+    </div>
+    <div class="navbar">
+        <a href="./index.html">Home</a>
+        <a href="./index1.html"class="active">Portfolio</a>
+        <a href="./index2.html">About</a>
+        <a href="./index3.html">Contact</a>
+    </div>
+    <div class="row">
+        <div class="side">
         <h1>Portfolio</h1>
 
         <div>
@@ -50,7 +51,8 @@
                 faucibus. Tellus lectus habitant laoreet per.
             </p>
         </div>
-
+    </div>
+    <div class="main">
         <div>
             <br>
             <ul id="projects">
@@ -64,7 +66,7 @@
                 Your browser does not support the audio tag.
             </audio>
             <p><code>this is supposed to be a code, but not really.</code></p>
-            <button class="btn"><img class="facebook" src="./images/Download.png" alt=""></i></button>
+            <button class="btn"><img class="facebook" src="./images/facebook.png" alt=""></i></button>
             <p></p>
             <p>Press <kbd>Ctrl</kbd> + <kbd>F5</kbd> to reload the page and its cache.</p>
             <p></p>
@@ -92,7 +94,10 @@
 
         </div>
     </div>
-
+</div>
+<div class="footer">
+    <h2>Footer</h2>
+</div>
 </body>
 
 </html>
