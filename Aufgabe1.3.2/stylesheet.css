@@ -1,0 +1,42 @@
+#navbar {
+   list-style-type: none;
+   margin-top: 0px;
+   padding-left: 0;
+   overflow: hidden;
+   background-color: #333;
+   position: fixed;
+   right: 150px;
+}
+
+li {
+   float: right;
+}
+
+li a {
+   display: block;
+   color: #FF8C00;
+   text-align: center;
+   padding: 8px 10px;
+   text-decoration: wavy;
+   font-family: sans-serif;
+   font-weight: bold;
+}  
+ 
+li a:hover {
+   background-color: #111;
+}
+body {
+    width: 800px;
+    color: #FF8C00;
+    margin: auto;
+    font-family: sans-serif;
+    background-image: url("images/bg.png");
+}
+
+.current {
+    color: #ff5e00;
+}
+
+#projects {
+    float: left;
+}
