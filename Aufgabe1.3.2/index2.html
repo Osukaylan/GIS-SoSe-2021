@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <link rel="stylesheet" href="../Aufgabe1.3.2/stylesheet.css">
     <meta charset="UTF-8">
@@ -7,40 +8,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
 </head>
+
 <body>
+    <div class="website">
+        <div class="sticky">
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index1.html">Portfolio</a></li>
+                <li><a class="current" href="./index2.html">About</a></li>
+                <li><a href="./index3.html">Kontakt</a></li>
+            </ul>
+        </div>
+        <h1>About me</h1>
+        <div>
+            <p><code>This page is about me!</code></p>
+            <button type="button" onclick="alert('Habs dir gesagt.')">Ich habe keine relevante funktion.</button>
 
-    <ul id="navbar">
-        <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3.2/index.html">Home</a></li>
-        <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3.2/index1.html">Portfolio</a></li>
-        <li><a class="current" href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3.2/index2.html">About</a></li>
-        <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3.2/index3.html">Kontakt</a></li>
-    </ul>   
+            <p id="idref">Mein Name ist <cite>Erdem Aktas</cite>, bin 23 Jahre jung und bin derzeit
+                <kbd>Student</kbd><br>
+            <aside>
+                Meine Eltern kommen aus der Türkei, ich selber bin in Deutschland geboren.
+            </aside>
 
-    <h1>About me</h1>
 
-    <p><code>This page is about me!</code></p>
-    <button type="button" onclick="alert('Habs dir gesagt.')">Ich habe keine relevante funktion.</button>
+            <p>hier die gleiche musik von vorher</p>
+            <audio controls>
+                <source src="audios/Megalovania_remix.mp3" type="audio/mp3">
+                Your browser does not support the audio tag.
+            </audio>
+            <p>hier ein video mit einem Schwein</p>
 
-    <p id="idref">Mein Name ist <cite>Erdem Aktas</cite>, bin 23 Jahre jung und bin derzeit <kbd>Student</kbd><br>
-        <aside>
-            Meine Eltern kommen aus der Türkei, ich selber bin in Deutschland geboren.
-        </aside>
-    
-
-    <p>hier die gleiche musik von vorher</p>
-    <audio controls>
-        <source src="audios/Megalovania_remix.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
-        <p>hier ein video mit einem Schwein</p>
-
-    <video width="320" height="240" controls>
-        <source src="videos/pig_video.mp4" type="video/mp4"></video>
-  <ul>
-    <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3/index.html">Home</a></li>
-    <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3/index1.html">Portfolio</a></li>
-    <li><a class="current" href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3/index2.html">About</a></li>
-    <li><a href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3/index3.html">Kontakt</a></li>
-  </ul>  
+            <video width="320" height="240" controls>
+                <source src="videos/pig_video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 </body>
+
 </html>
