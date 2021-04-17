@@ -196,3 +196,34 @@ input[type=submit]:hover {
 #video {
     color: crimson;
 }
+div.footer h2 {             /* look for every child (h2) inside parent (div class="footer") */ 
+    opacity: 100%;
+}
+div.header > h1 {           /* look for every child (h1) inside parent (div class="header") */
+    opacity: 100%;
+}
+h1 ~ p {                    /* look for every p after h2 with the same parent of h2 */
+    opacity: 100%;
+}
+h1 + p {                    /* look for every p directly after a h1 element */
+    opacity: 100%;
+}
+a[href="https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.2/"] { /*Search ONLY for that specific link */
+    opacity: 100%;
+}
+a[href*="index"] { /*search for "index" in all href's */
+    opacity: 100%;
+}
+@media screen and (max-width: 600px) {
+    .navbar {
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+    font-size: 6vh;
+    }
+}
