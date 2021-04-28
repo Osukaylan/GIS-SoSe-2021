@@ -1,3 +1,18 @@
+function schachbrett(länge: number, breite: number): void {
+
+    for (var _i: number = 0; _i < länge; _i++) {
+        let reihe: String = "";
+        for (var _a: number = 1; _a <= breite; _a++) {
+
+            if ((_i + _a) % 2 == 0) {
+                reihe += " # ";
+            }
+            console.log(" ");     
+        }
+        console.log(reihe);
+    }
+}
+
 /*function a1(): void {
     let x: string = "Alles";
     console.log(x);
@@ -101,13 +116,15 @@ a:
 }
 
 b:
- function max(multi1: number, multi2: number): void {
-         if (multi1 < multi2) {
-        console.log(multi2 + " ist größer");
-
-        } else
-        console.log(multi1 + " ist größer");
-}
+function max(multi1: number, multi2:number): number{
+    if (multi1 < multi2)
+    {
+        return multi2;
+    }
+    else{
+        return multi1;
+    }
+}      
 
 c:
  function 1to100(): void {
@@ -174,17 +191,34 @@ b und c:
 }
 
 d:
- function schachbrett(Länge: number, Breite: number): void {
+function schachbrett(höhe: number, breite: number): void {
 
-    for (var _i = 0; _i < Länge; _i++) {
-        let Reie: String = "";
-        for (var _a = 1; _a <= Breite; _a++) {
+    let _o: boolean = true;
+    let reihe: String = "";
 
-            if ((_i + _a) % 2 == 0) {
-                reihe += "#";
+    for(var _i: number = 0; _i < höhe; _i++){
+
+        for (var _a: number = 0; _a < breite; _a++) {
+
+            if(_o == true) 
+            {
+                reihe += " #"
             }
-            console.log("");     
+            else{
+                reihe += "# "     
+            }
         }
-        console.log(Reie);
+        if( _i != höhe)
+        {
+            reihe  += "\n"
+        }
+        if(_o == true)
+        {
+            _o = false
+        }else{
+            _o = true
+        }     
     }
+        console.log(reihe);
 }
+*/
