@@ -1,3 +1,4 @@
+schachbrett(15, 4); 
 function schachbrett(länge: number, breite: number): void {
 
     for (var _i: number = 0; _i < länge; _i++) {

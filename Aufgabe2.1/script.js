@@ -1,4 +1,5 @@
 "use strict";
+schachbrett(15, 4);
 function schachbrett(länge, breite) {
     for (var _i = 0; _i < länge; _i++) {
         let reihe = "";
