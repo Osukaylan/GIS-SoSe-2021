@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+#hello {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+}
