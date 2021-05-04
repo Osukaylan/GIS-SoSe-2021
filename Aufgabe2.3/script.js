@@ -79,4 +79,28 @@ document.getElementById("refresher").addEventListener("click", reload);
 function reload() {
     location.reload();
 }
+function createRectangle() {
+    let x = Math.floor(Math.random() * window.innerWidth);
+    let y = Math.floor(Math.random() * window.innerHeight);
+    let w = Math.floor(Math.random() * 200) + 1;
+    let h = Math.floor(Math.random() * 200) + 1;
+    return { "x": x, "y": y, "w": w, "h": h };
+}
+let rechtecke = createRectangle();
+function drawRectangles1(rechtecke) {
+    let rndmSquares = document.createElement("div");
+    rndmSquares.style.position = "relative";
+    rndmSquares.style.left = rechtecke.x + "px";
+    rndmSquares.style.top = rechtecke.y + "px";
+    rndmSquares.style.width = rechtecke.w + "px";
+    rndmSquares.style.height = rechtecke.h + "px";
+    rndmSquares.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+    rndmSquares.style.visibility = "visible";
+    rndmSquares.id = "rndmSquares";
+    document.body.appendChild(rndmSquares);
+    document.getElementById("rndmSquares").style.zIndex = "1";
+}
+drawRectangles1(createRectangle());
+drawRectangles1(createRectangle());
+drawRectangles1(createRectangle());
 //# sourceMappingURL=script.js.map

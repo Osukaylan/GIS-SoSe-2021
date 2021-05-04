@@ -101,3 +101,34 @@ document.getElementById("refresher").addEventListener("click", reload);
 function reload(): void {
     location.reload();
 }
+
+
+function createRectangle(): Rectangle1 {
+
+    let x: number = Math.floor(Math.random() * window.innerWidth);
+    let y: number = Math.floor(Math.random() * window.innerHeight);
+    let w: number = Math.floor(Math.random() * 200) + 1;
+    let h: number = Math.floor(Math.random() * 200) + 1;
+    return { "x": x, "y": y, "w": w, "h": h };
+}
+
+let rechtecke: Rectangle1 = createRectangle();
+
+function drawRectangles1(rechtecke: Rectangle1): void {
+
+        let rndmSquares: HTMLDivElement = document.createElement("div");
+        rndmSquares.style.position = "relative";
+        rndmSquares.style.left = rechtecke.x + "px";
+        rndmSquares.style.top = rechtecke.y + "px";
+        rndmSquares.style.width = rechtecke.w + "px";
+        rndmSquares.style.height = rechtecke.h + "px";
+        rndmSquares.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+        rndmSquares.style.visibility = "visible";
+        rndmSquares.id = "rndmSquares";
+        document.body.appendChild(rndmSquares);
+        document.getElementById("rndmSquares").style.zIndex = "1";
+
+}
+drawRectangles1(createRectangle());
+drawRectangles1(createRectangle());
+drawRectangles1(createRectangle());

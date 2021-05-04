@@ -72,11 +72,11 @@ function createRect(): Rectangle1 {
     let y: number = Math.floor(Math.random() * window.innerHeight);
     let w: number = Math.floor(Math.random() * 200) + 1;
     let h: number = Math.floor(Math.random() * 200) + 1;
-    console.log({"x": x, "y": y, "w": w, "h": h});
-    return {"x": x, "y": y, "w": w, "h": h};
-    }
+    console.log({ "x": x, "y": y, "w": w, "h": h });
+    return { "x": x, "y": y, "w": w, "h": h };
+}
 
-let rechteck: Rectangle1 = createRect();    
+let rechteck: Rectangle1 = createRect();
 
 function drawRect(_rechteck: Rectangle1): void {
 
