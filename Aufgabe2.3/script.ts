@@ -16,7 +16,7 @@ interface Rectangle1 {
 function createbutton(): Rectangle1 {
     let x: number = Math.floor(Math.random() * window.innerWidth / 2);
     let y: number = Math.floor(Math.random() * window.innerHeight / 2);
-    
+
     if (y > window.innerHeight) {
         y = - window.innerHeight;
     }
@@ -34,36 +34,11 @@ function createbutton(): Rectangle1 {
         y = - window.innerHeight;
     }
 
-    drawRectangle1(x, y, w, h);
+    drawRectangle1(createRectangle());
+    drawRectangle2(createRectangle());
     grassdrawer(0, (window.innerHeight * 2) / 3, window.innerWidth, window.innerHeight / 3);
-    housedrawer(200,  (window.innerHeight * 2) / 12, 300, window.innerHeight / 2);
+    housedrawer(200, (window.innerHeight * 2) / 12, 300, window.innerHeight / 2);
     return { "x": x, "y": y, "w": w, "h": h };
-}
-
-function drawRectangle1(x: number, y: number, w: number, h: number): Rectangle1 {
-
-    var rectReturn: Rectangle1 = { h: 0, x: 0, y: 0, w: 0 };
-
-    if (document.createElement) {
-        let rndmSquare: HTMLDivElement = document.createElement("div");
-        rndmSquare.style.position = "relative";
-        rndmSquare.style.left = x + "px";
-        rndmSquare.style.top = y + "px";
-        rndmSquare.style.width = w + "px";
-        rndmSquare.style.height = h + "px";
-        rndmSquare.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-        rndmSquare.style.visibility = "visible";
-        rndmSquare.id = "rndmSquare";
-        document.body.appendChild(rndmSquare);
-        document.getElementById("rndmSquare").style.zIndex = "1";
-        console.log({ "x": x, "y": y, "w": w, "h": h });
-        rectReturn.h = h;
-        rectReturn.w = w;
-        rectReturn.x = x;
-        rectReturn.y = y;
-    }
-
-    return rectReturn;
 }
 
 function grassdrawer(x: number, y: number, w: number, h: number): void {
@@ -77,6 +52,7 @@ function grassdrawer(x: number, y: number, w: number, h: number): void {
     gras.style.visibility = "visible";
     gras.id = "canvasgras";
     document.body.appendChild(gras);
+    document.getElementById("canvasgras").style.zIndex = "-1";
 }
 
 function housedrawer(x: number, y: number, w: number, h: number): void {
@@ -88,7 +64,9 @@ function housedrawer(x: number, y: number, w: number, h: number): void {
     house.style.height = h + "px";
     house.style.backgroundColor = "gray";
     house.style.visibility = "visible";
+    house.id = "housepog";
     document.body.appendChild(house);
+    document.getElementById("housepog").style.zIndex = "-1";
 }
 
 let refreshbutton: HTMLElement = document.createElement("BUTTON");
@@ -116,19 +94,50 @@ let rechtecke: Rectangle1 = createRectangle();
 
 function drawRectangles1(rechtecke: Rectangle1): void {
 
-        let rndmSquares: HTMLDivElement = document.createElement("div");
-        rndmSquares.style.position = "relative";
-        rndmSquares.style.left = rechtecke.x + "px";
-        rndmSquares.style.top = rechtecke.y + "px";
-        rndmSquares.style.width = rechtecke.w + "px";
-        rndmSquares.style.height = rechtecke.h + "px";
-        rndmSquares.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-        rndmSquares.style.visibility = "visible";
-        rndmSquares.id = "rndmSquares";
-        document.body.appendChild(rndmSquares);
-        document.getElementById("rndmSquares").style.zIndex = "1";
+    let rndmSquares: HTMLDivElement = document.createElement("div");
+    rndmSquares.style.position = "absolute";
+    rndmSquares.style.left = rechtecke.x + "px";
+    rndmSquares.style.top = rechtecke.y + "px";
+    rndmSquares.style.width = rechtecke.w + "px";
+    rndmSquares.style.height = rechtecke.h + "px";
+    rndmSquares.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+    rndmSquares.style.visibility = "visible";
+    rndmSquares.id = "rndmSquares";
+    document.body.appendChild(rndmSquares);
+    document.getElementById("rndmSquares").style.zIndex = "1";
 
 }
 drawRectangles1(createRectangle());
 drawRectangles1(createRectangle());
 drawRectangles1(createRectangle());
+
+let rechteckes: Rectangle1 = createRectangle();
+
+function drawRectangle1(rechteckes: Rectangle1): void {
+
+    let rndmSquare: HTMLDivElement = document.createElement("div");
+    rndmSquare.style.position = "absolute";
+    rndmSquare.style.left = rechteckes.x + "px";
+    rndmSquare.style.top = rechteckes.y + "px";
+    rndmSquare.style.width = rechteckes.w + "px";
+    rndmSquare.style.height = rechteckes.h + "px";
+    rndmSquare.style.backgroundColor = "blue";
+    rndmSquare.style.visibility = "visible";
+    rndmSquare.id = "rndmSquare";
+    document.body.appendChild(rndmSquare);
+    document.getElementById("rndmSquare").style.zIndex = "1";
+
+}
+function drawRectangle2(rechteckes: Rectangle1): void {
+    let rndmsquared: HTMLDivElement = document.createElement("div");
+    rndmsquared.style.position = "absolute";
+    rndmsquared.style.left = rechteckes.x + "px";
+    rndmsquared.style.top = rechteckes.y + "px";
+    rndmsquared.style.width = rechteckes.w + "px";
+    rndmsquared.style.height = rechteckes.h + "px";
+    rndmsquared.style.backgroundColor = "blue";
+    rndmsquared.style.visibility = "visible";
+    rndmsquared.id = "rndmsquared";
+    document.body.appendChild(rndmsquared);
+    document.getElementById("rndmsquared").style.zIndex = "1";
+}

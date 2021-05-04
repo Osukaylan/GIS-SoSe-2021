@@ -20,32 +20,11 @@ function createbutton() {
     if (h > window.innerHeight) {
         y = -window.innerHeight;
     }
-    drawRectangle1(x, y, w, h);
+    drawRectangle1(createRectangle());
+    drawRectangle2(createRectangle());
     grassdrawer(0, (window.innerHeight * 2) / 3, window.innerWidth, window.innerHeight / 3);
     housedrawer(200, (window.innerHeight * 2) / 12, 300, window.innerHeight / 2);
     return { "x": x, "y": y, "w": w, "h": h };
-}
-function drawRectangle1(x, y, w, h) {
-    var rectReturn = { h: 0, x: 0, y: 0, w: 0 };
-    if (document.createElement) {
-        let rndmSquare = document.createElement("div");
-        rndmSquare.style.position = "relative";
-        rndmSquare.style.left = x + "px";
-        rndmSquare.style.top = y + "px";
-        rndmSquare.style.width = w + "px";
-        rndmSquare.style.height = h + "px";
-        rndmSquare.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-        rndmSquare.style.visibility = "visible";
-        rndmSquare.id = "rndmSquare";
-        document.body.appendChild(rndmSquare);
-        document.getElementById("rndmSquare").style.zIndex = "1";
-        console.log({ "x": x, "y": y, "w": w, "h": h });
-        rectReturn.h = h;
-        rectReturn.w = w;
-        rectReturn.x = x;
-        rectReturn.y = y;
-    }
-    return rectReturn;
 }
 function grassdrawer(x, y, w, h) {
     let gras = document.createElement("div");
@@ -58,6 +37,7 @@ function grassdrawer(x, y, w, h) {
     gras.style.visibility = "visible";
     gras.id = "canvasgras";
     document.body.appendChild(gras);
+    document.getElementById("canvasgras").style.zIndex = "-1";
 }
 function housedrawer(x, y, w, h) {
     let house = document.createElement("div");
@@ -68,7 +48,9 @@ function housedrawer(x, y, w, h) {
     house.style.height = h + "px";
     house.style.backgroundColor = "gray";
     house.style.visibility = "visible";
+    house.id = "housepog";
     document.body.appendChild(house);
+    document.getElementById("housepog").style.zIndex = "-1";
 }
 let refreshbutton = document.createElement("BUTTON");
 refreshbutton.id = "refresher";
@@ -89,7 +71,7 @@ function createRectangle() {
 let rechtecke = createRectangle();
 function drawRectangles1(rechtecke) {
     let rndmSquares = document.createElement("div");
-    rndmSquares.style.position = "relative";
+    rndmSquares.style.position = "absolute";
     rndmSquares.style.left = rechtecke.x + "px";
     rndmSquares.style.top = rechtecke.y + "px";
     rndmSquares.style.width = rechtecke.w + "px";
@@ -103,4 +85,31 @@ function drawRectangles1(rechtecke) {
 drawRectangles1(createRectangle());
 drawRectangles1(createRectangle());
 drawRectangles1(createRectangle());
+let rechteckes = createRectangle();
+function drawRectangle1(rechteckes) {
+    let rndmSquare = document.createElement("div");
+    rndmSquare.style.position = "absolute";
+    rndmSquare.style.left = rechteckes.x + "px";
+    rndmSquare.style.top = rechteckes.y + "px";
+    rndmSquare.style.width = rechteckes.w + "px";
+    rndmSquare.style.height = rechteckes.h + "px";
+    rndmSquare.style.backgroundColor = "blue";
+    rndmSquare.style.visibility = "visible";
+    rndmSquare.id = "rndmSquare";
+    document.body.appendChild(rndmSquare);
+    document.getElementById("rndmSquare").style.zIndex = "1";
+}
+function drawRectangle2(rechteckes) {
+    let rndmsquared = document.createElement("div");
+    rndmsquared.style.position = "absolute";
+    rndmsquared.style.left = rechteckes.x + "px";
+    rndmsquared.style.top = rechteckes.y + "px";
+    rndmsquared.style.width = rechteckes.w + "px";
+    rndmsquared.style.height = rechteckes.h + "px";
+    rndmsquared.style.backgroundColor = "blue";
+    rndmsquared.style.visibility = "visible";
+    rndmsquared.id = "rndmsquared";
+    document.body.appendChild(rndmsquared);
+    document.getElementById("rndmsquared").style.zIndex = "1";
+}
 //# sourceMappingURL=script.js.map
