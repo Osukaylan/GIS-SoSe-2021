@@ -1,21 +1,24 @@
 "use strict";
 /*1a
-min([13, 15, 12, -23, -67]);
-function min(nummernArray: number) {
+min([13, 15, 12, -23, -67]);*/
+function min(nummernArray) {
     let sorted = Math.min.apply(null, nummernArray);
     console.log(sorted);
-}*/
+}
+
 /// EDIT 1A
-min(2, 3, 8, 7, 5);
-min(33, 3, 8, 7, 5);
-function min(...args) {
-    let arguNum = new Array();
-    for (var i = 0; i < args.length; i++) {
-        arguNum.push(args[i]);
-    }
+min(2,3,8,7,5);
+min(33,3,8,7,5);
+function min() {
+	  let arguNum = new Array();
+	  for (var i = 0; i < arguments.length; i++) {
+		// Create array from arguments
+		arguNum.push(arguments[i]);
+	  }
     let minVal = Math.min.apply(null, arguNum);
     console.log(minVal);
 }
+
 /*1b
 let thing1: Boolean = isEven(75);
 let thing2: Boolean = isEven(50);
@@ -25,8 +28,7 @@ let thing4: Boolean = isEven(-50);
 console.log(thing1.toString());
 console.log(thing2.toString());
 console.log(thing3.toString());
-console.log(thing4.toString());
-
+console.log(thing4.toString());*/
 function isEven(inputVar) {
     var boolVal = true;
     var inte = 0;
@@ -41,7 +43,8 @@ function isEven(inputVar) {
         boolVal = false;
     }
     return boolVal;
-}*/
+}
+
 /// EDIT 1B
 console.log(isEven(2));
 console.log(isEven(3));
@@ -49,19 +52,21 @@ console.log(isEven(-2));
 console.log(isEven(-10));
 console.log(isEven(10));
 function isEven(inputVar) {
-    if (inputVar == 0) {
-        return true;
-    }
-    else if (inputVar == 1) {
-        return false;
-    }
-    else if (inputVar > 0) {
-        return isEven(inputVar - 2);
-    }
-    else {
-        return isEven(-inputVar);
-    }
+
+	if(inputVar == 0){
+		return true;
+	}
+	else if(inputVar == 1){	
+		return false;
+	}
+	else if(inputVar > 0){
+		return isEven(inputVar - 2)
+	}
+	else{ return isEven(-inputVar)
+	}
+
 }
+
 var student = {
     firstName: "Hans",
     lastName: "Mueller",
@@ -108,25 +113,30 @@ function join(first, second) {
     const result = [...first, ...second];
     return (result);
 }
+
+
+
 function split(arr, start, end) {
     var result = new Array;
+	// Omitted first if
     if (start < 0) {
         console.log("error");
-        return result;
+        return;
     }
     if (start > end) {
         console.log("dont tempt me");
-        return result;
+        return;
     }
     if (start == 0 && end == arr.length) {
         console.log(arr);
-        return result;
+        return;
     }
     for (var i = start; i <= end; i++) {
         result.push(arr[i]);
     }
-    return result;
+	return result;
 }
+
 let arr = [5, 42, 17, 2018, -10, 60, -10010];
 let arrBack = backwards(arr);
 console.log(arr);
@@ -134,4 +144,5 @@ console.log(arrBack);
 console.log(join(arr, [15, 9001, -440]));
 console.log(split(arr, 1, 2));
 console.log(split(arr, -1, 2));
+//Aufgabe3
 //# sourceMappingURL=script.js.map
