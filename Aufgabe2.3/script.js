@@ -1,4 +1,5 @@
 "use strict";
+//Aufgabe 1
 const divCreator = document.createElement("div");
 var creator = document.createElement("BUTTON");
 creator.id = "RectangleCreator";
@@ -11,7 +12,6 @@ function createbutton() {
     if (y > window.innerHeight) {
         y = -window.innerHeight;
     }
-    //let w: number = Math.floor(Math.random() * 200);
     let w = Math.floor(Math.random() * 200);
     if (w > window.innerWidth) {
         w = -window.innerWidth;

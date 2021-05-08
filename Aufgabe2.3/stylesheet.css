@@ -16,3 +16,14 @@
     top: 45%;
     left: 50%;
 }
+
+.headChoice {
+    width: 300px;
+    float: left;
+}
+
+.generatedImage {
+    width: 300px;
+    height: 300px;
+    float: left;
+}

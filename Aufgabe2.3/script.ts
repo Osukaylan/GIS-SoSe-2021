@@ -1,3 +1,4 @@
+//Aufgabe 1
 const divCreator: HTMLElement = document.createElement("div");
 
 var creator: HTMLElement = document.createElement("BUTTON");
@@ -21,7 +22,6 @@ function createbutton(): Rectangle1 {
         y = - window.innerHeight;
     }
 
-    //let w: number = Math.floor(Math.random() * 200);
     let w: number = Math.floor(Math.random() * 200);
 
     if (w > window.innerWidth) {
