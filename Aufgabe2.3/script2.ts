@@ -16,7 +16,7 @@ function showImage(animalInterface: InterfaceAnimal[]): void {
         image.src = animalInterface[index].imageSource;
 
         image.classList.add("generatedImage");
-        if (animalInterface[index].personality == "head") {
+        if (animalInterface[index].personality == "Moody") {
             image.addEventListener("click", headChoser);
         } else if (animalInterface[index].personality == "body") {
             image.addEventListener("click", bodyChoser);
