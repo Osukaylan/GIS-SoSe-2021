@@ -2,7 +2,7 @@
 var Aufgabe_2_4;
 (function (Aufgabe_2_4) {
     function NextPage() {
-        if (window.location.href.includes("index.html")) {
+        if (window.location.href.includes("head.html")) {
             window.open("body.html", "_self");
         }
         if (window.location.href.includes("body.html")) {
@@ -14,7 +14,7 @@ var Aufgabe_2_4;
     }
     function retrieveBodyParts() {
         let bodyParts;
-        if (window.location.href.includes("index.html"))
+        if (window.location.href.includes("head.html"))
             bodyParts = Aufgabe_2_4.myObj.heads;
         if (window.location.href.includes("body.html"))
             bodyParts = Aufgabe_2_4.myObj.bodies;
@@ -23,7 +23,7 @@ var Aufgabe_2_4;
         return bodyParts;
     }
     function savePartToSession(imgSrc) {
-        if (window.location.href.includes("index.html")) {
+        if (window.location.href.includes("head.html")) {
             sessionStorage.setItem("0", imgSrc);
         }
         if (window.location.href.includes("body.html")) {
@@ -143,7 +143,7 @@ var Aufgabe_2_4;
             previousElement.appendChild(img);
         }
     }
-    if (window.location.href.includes("index.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
+    if (window.location.href.includes("head.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
         createSelections();
         showPreviousSelections();
     }

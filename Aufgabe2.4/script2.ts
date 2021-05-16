@@ -2,7 +2,7 @@ namespace Aufgabe_2_4 {
 
     function NextPage(): void {
 
-        if (window.location.href.includes("index.html")) {
+        if (window.location.href.includes("head.html")) {
 
             window.open("body.html", "_self");
 
@@ -22,7 +22,7 @@ namespace Aufgabe_2_4 {
     function retrieveBodyParts(): BodyPart[] {
         let bodyParts: BodyPart[];
 
-        if (window.location.href.includes("index.html"))
+        if (window.location.href.includes("head.html"))
             bodyParts = myObj.heads;
 
         if (window.location.href.includes("body.html"))
@@ -36,7 +36,7 @@ namespace Aufgabe_2_4 {
 
     function savePartToSession(imgSrc: string): void {
         
-        if (window.location.href.includes("index.html")) {
+        if (window.location.href.includes("head.html")) {
             sessionStorage.setItem("0", imgSrc);
         }
 
@@ -187,7 +187,7 @@ namespace Aufgabe_2_4 {
         }
     }
 
-    if (window.location.href.includes("index.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
+    if (window.location.href.includes("head.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
         createSelections();
         showPreviousSelections();
     }
