@@ -1,0 +1,41 @@
+{
+   "heads":[
+       {"name":"Boris",
+       "description":"Asian Leopard Cat",
+       "imageSource":"images/Asian_Leopard_Cat.jpg"},
+       
+       {"name":"Tess",
+       "description":"Japanese Bobtail",
+       "imageSource":"images/Untitled-1.png"},
+       
+       {"name":"Gary",
+       "description":"Pixie Bob",
+       "imageSource":"images/Untitled-2.png"}],
+       
+   "bodies":[
+       {"name":"Dog",
+       "description":"CatFloppyEars",
+       "imageSource":"images/dog-body.jpg"},
+       
+       {"name":"Lion",
+       "description":"CatSideEars",
+       "imageSource":"images/lion_body.png"},
+       
+       {"name":"Bear",
+       "description":"CatNarrowEars",
+       "imageSource":"images/bear-body.jpg"}],
+       
+   "paws":[
+       {"name":"Tiger",
+       "description":"CatFloppyEars",
+       "imageSource":"images/tiger-paws.jpg"},
+   
+       {"name":"Polar Bear",
+       "description":"CatSideEars",
+       "imageSource":"images/polar-bear-paws.jpg"},
+       
+       {"name":"Dog",
+       "description":"CatNarrowEars",
+       "imageSource":"images/dog-paws.jpg"}
+   ]
+}
