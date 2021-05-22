@@ -1,4 +1,21 @@
 namespace Aufgabe_2_5 {
+    
+    /*function FetchJSON(): AllParts {
+                
+        const fetchPromise = fetch("https://raw.githubusercontent.com/Osukaylan/GIS-SoSe-2021/main/Aufgabe2.5/data.json");
+        fetchPromise.then(response => {
+        console.log(response);
+        response.json();
+
+
+        });
+
+        var parsedFile: AllParts = JSON.parse(theResponseJsonVar);
+
+        return parsedFile; 
+    }*/
+
+    //2 functions to deal with success or error
 
     function NextPage(): void {
 
@@ -19,20 +36,32 @@ namespace Aufgabe_2_5 {
         }
     }
 
-    function retrieveBodyParts(): BodyPart[] {
-        let bodyParts: BodyPart[];
+    function retrieveBodyParts(allParts: AllParts): BodyPart[] {
+        
+    
+
+        let type: BodyPart[] = allParts.heads;
 
         if (window.location.href.includes("head.html"))
-            bodyParts = myObj.heads;
+            type = allParts.heads;
 
         if (window.location.href.includes("body.html"))
-            bodyParts = myObj.bodies;
+            type = allParts.bodies;
 
         if (window.location.href.includes("paws.html"))
-            bodyParts = myObj.paws;
+            type = allParts.paws;
 
-        return bodyParts;
+        return type;
     }
+
+    async function fetchJSON(_url: RequestInfo): Promise<void> {
+        let antwort: Response = await fetch(_url);
+        let data: AllParts = await antwort.json();
+        console.log("Response", data);
+        let chose: BodyPart[] = retrieveBodyParts(data);
+        createSelections(chose);
+    }
+    fetchJSON("data.json");
 
     function savePartToSession(imgSrc: string): void {
         
@@ -158,7 +187,7 @@ namespace Aufgabe_2_5 {
 
     //showPossibilities(myObj.heads);
 
-    function createSelections(): void {
+    /*function createSelections(): void {
         let previousElement: HTMLElement = document.getElementById("selectionWrapper");
         let bodyParts: BodyPart[] = retrieveBodyParts();
         for (let i: number = 0; i < bodyParts.length; i++) {
@@ -185,6 +214,7 @@ namespace Aufgabe_2_5 {
             img.id = bodyParts[i].imageSource;
             previousElement.appendChild(img);
         }
+
     }
 
     if (window.location.href.includes("head.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
@@ -194,6 +224,29 @@ namespace Aufgabe_2_5 {
 
     if (window.location.href.includes("final.html")) {
         showFinalSelection();
+    }*/
+
+    function createSelections(_chosen: BodyPart[]): void {
+        let previousElement: HTMLElement = document.getElementById("selectionWrapper");
+        for (let i: number = 0; i < _chosen.length; i++) {
+
+            let img: HTMLElement = document.createElement("img");
+            img.setAttribute("src", _chosen[i].name);
+            img.addEventListener("click", function (): void {savePartToSession(_chosen[i].imageSource); });
+            img.addEventListener("click", NextPage);
+
+            img.id = _chosen[i].imageSource;
+            previousElement.appendChild(img);
+
+            
+        }
+    }
+    if (window.location.href.includes("head.html") || window.location.href.includes("body.html") || window.location.href.includes("paws.html")) {
+        
+        showPreviousSelections();
     }
 
+    if (window.location.href.includes("final.html")) {
+        showFinalSelection();
+}
 }

@@ -1,4 +1,4 @@
-namespace Aufgabe_2_4                                                                        {
+namespace Aufgabe_2_5                                                                        {
 
 //declaring them
 export interface BodyPart {
