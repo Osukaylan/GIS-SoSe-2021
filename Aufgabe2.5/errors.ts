@@ -7,6 +7,8 @@ namespace Aufgabe_2_5 {
 
 
     let fin: HTMLElement = document.getElementById("selectionWrapper");
+    let newButton: HTMLElement = document.getElementById("restart");
+    let website: HTMLElement = document.getElementById("website");
 
     function finishing(source: string): void {
         //    const gewaehltes: EisWahl[] = waehlen();
@@ -17,9 +19,23 @@ namespace Aufgabe_2_5 {
 
 
     }
-    finishing(sessionStorage.getItem("0"));
-    finishing(sessionStorage.getItem("1"));
+
     finishing(sessionStorage.getItem("2"));
+    finishing(sessionStorage.getItem("1"));
+    finishing(sessionStorage.getItem("0"));
+
+    let restart: HTMLButtonElement = document.createElement("button");
+    restart.id = "restart";
+    restart.innerHTML = "Create new animal";
+    restart.addEventListener("click", restartPage);
+    newButton.appendChild(restart);
+
+
+    function restartPage(): void {
+
+        window.open("index.html", "_self");
+
+    }
 
     async function showCache(): Promise<void> {
 
@@ -45,9 +61,14 @@ namespace Aufgabe_2_5 {
         }
     }
 
-    if (window.location.href.includes("final.html")) {
+    showCache();
 
-        showCache();
-
+    function pageOpen(): void {
+        window.open("https://osukaylan.github.io/GIS-SoSe-2021/Aufgabe1.3.2/");
     }
-}
+
+    let web: HTMLElement = document.createElement("page");
+    web.innerText = "With this you get to my task 1.4 page.";
+    web.addEventListener("click", pageOpen);
+    website.appendChild(web);
+} 
