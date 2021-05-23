@@ -231,7 +231,7 @@ namespace Aufgabe_2_5 {
         for (let i: number = 0; i < _chosen.length; i++) {
 
             let img: HTMLElement = document.createElement("img");
-            img.setAttribute("src", _chosen[i].name);
+            img.setAttribute("src", _chosen[i].imageSource);
             img.addEventListener("click", function (): void {savePartToSession(_chosen[i].imageSource); });
             img.addEventListener("click", NextPage);
 

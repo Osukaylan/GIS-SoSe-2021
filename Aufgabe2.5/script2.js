@@ -186,7 +186,7 @@ var Aufgabe_2_5;
         let previousElement = document.getElementById("selectionWrapper");
         for (let i = 0; i < _chosen.length; i++) {
             let img = document.createElement("img");
-            img.setAttribute("src", _chosen[i].name);
+            img.setAttribute("src", _chosen[i].imageSource);
             img.addEventListener("click", function () { savePartToSession(_chosen[i].imageSource); });
             img.addEventListener("click", NextPage);
             img.id = _chosen[i].imageSource;
