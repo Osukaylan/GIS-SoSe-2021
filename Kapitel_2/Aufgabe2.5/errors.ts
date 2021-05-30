@@ -6,15 +6,17 @@ namespace Aufgabe_2_5 {
     }
 
 
-    let fin: HTMLElement = document.getElementById("selectionWrapper");
+    const fin: HTMLElement = document.getElementById("selectedParts");
     let newButton: HTMLElement = document.getElementById("restart");
     let website: HTMLElement = document.getElementById("website");
 
     function finishing(source: string): void {
-        //    const gewaehltes: EisWahl[] = waehlen();
-
+        
+        console.log(source);
+        console.log(fin);
         let img: HTMLElement = document.createElement("img");
         img.setAttribute("src", source);
+        console.log(img);
         fin.appendChild(img);
 
 
@@ -33,13 +35,13 @@ namespace Aufgabe_2_5 {
 
     function restartPage(): void {
 
-        window.open("index.html", "_self");
+        window.open("head.html", "_self");
 
     }
 
     async function showCache(): Promise<void> {
 
-         
+
         let query: URLSearchParams = new URLSearchParams(<any>sessionStorage);
         let url: string = "https://gis-communication.herokuapp.com";
         url = url + "?" + query.toString();
@@ -51,7 +53,7 @@ namespace Aufgabe_2_5 {
             console.log(awaitedResponse.error);
             let backDiv: HTMLElement = document.getElementById("messageError");
             backDiv.appendChild(document.createTextNode("" + awaitedResponse.error));
-            
+
 
         } else if (awaitedResponse.message != undefined) {
 
@@ -71,4 +73,4 @@ namespace Aufgabe_2_5 {
     web.innerText = "With this you get to my task 1.4 page.";
     web.addEventListener("click", pageOpen);
     website.appendChild(web);
-} 
+}

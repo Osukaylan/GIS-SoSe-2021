@@ -1,13 +1,15 @@
 "use strict";
 var Aufgabe_2_5;
 (function (Aufgabe_2_5) {
-    let fin = document.getElementById("selectionWrapper");
+    const fin = document.getElementById("selectedParts");
     let newButton = document.getElementById("restart");
     let website = document.getElementById("website");
     function finishing(source) {
-        //    const gewaehltes: EisWahl[] = waehlen();
+        console.log(source);
+        console.log(fin);
         let img = document.createElement("img");
         img.setAttribute("src", source);
+        console.log(img);
         fin.appendChild(img);
     }
     finishing(sessionStorage.getItem("2"));
@@ -19,7 +21,7 @@ var Aufgabe_2_5;
     restart.addEventListener("click", restartPage);
     newButton.appendChild(restart);
     function restartPage() {
-        window.open("index.html", "_self");
+        window.open("head.html", "_self");
     }
     async function showCache() {
         let query = new URLSearchParams(sessionStorage);
