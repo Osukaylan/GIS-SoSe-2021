@@ -16,7 +16,6 @@ export namespace Aufgabe3_1 {
         console.log("Listening"); 
     }
 
-
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("I hear voices!"); //Console log 
         console.log(_request.url); //Console log 
