@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "@types/node": "^15.6.1"
-  }
+  },
+  "name": "gissose2021erdem",
+  "description": "hello world",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Kapitel_3/Aufgabe3_1/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Osukaylan/GIS-SoSe-2021.git"
+  },
+  "author": "Erdem Aktas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Osukaylan/GIS-SoSe-2021/issues"
+  },
+  "homepage": "https://github.com/Osukaylan/GIS-SoSe-2021#readme"
 }
