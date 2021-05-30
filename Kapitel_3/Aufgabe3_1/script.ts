@@ -17,5 +17,5 @@ async function sendValues(): Promise<void> {
     let ret: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("output");
     ret.innerText = output;   
 }
-let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("btn");
+let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("button");
 button.addEventListener("click", sendValues);

@@ -17,6 +17,6 @@ async function sendValues() {
     let ret = document.getElementById("output");
     ret.innerText = output;
 }
-let button = document.getElementById("btn");
+let button = document.getElementById("button");
 button.addEventListener("click", sendValues);
 //# sourceMappingURL=script.js.map
