@@ -1,3 +1,4 @@
+/*
 import * as Http from "http";
 
 export namespace Aufgabe3_1 {
@@ -27,3 +28,4 @@ export namespace Aufgabe3_1 {
     }
     
 }
+*/

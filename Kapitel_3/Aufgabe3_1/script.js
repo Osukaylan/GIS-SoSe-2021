@@ -1,22 +1,25 @@
 "use strict";
-async function sendValues() {
-    let values = new FormData(document.forms[0]);
+/*
+async function sendValues(): Promise<void> {
+
+    let values: FormData = new FormData(document.forms[0]);
     console.log(": " + values.get("name"));
     for (let entry of values) {
         console.log(entry);
         console.log("name:" + entry[0]);
         console.log("value:" + entry[1]);
     }
-    let query = new URLSearchParams(values);
-    let _url = "https://kapitel3gissose2021.herokuapp.com/";
+    let query: URLSearchParams = new URLSearchParams(<any>values);
+    let _url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com/";
     _url = _url + "?" + query.toString();
     console.log(_url);
-    let ant = await fetch(_url);
-    let output = await ant.text();
+    let ant: Response = await fetch(_url);
+    let output: string = await ant.text();
     console.log(output);
-    let ret = document.getElementById("output");
+    let ret: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("output");
     ret.innerText = output;
 }
-let button = document.getElementById("button");
+let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("button");
 button.addEventListener("click", sendValues);
+*/ 
 //# sourceMappingURL=script.js.map

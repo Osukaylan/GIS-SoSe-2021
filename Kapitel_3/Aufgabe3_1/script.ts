@@ -1,3 +1,4 @@
+/*
 async function sendValues(): Promise<void> {
 
     let values: FormData = new FormData(document.forms[0]);
@@ -19,3 +20,4 @@ async function sendValues(): Promise<void> {
 }
 let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("button");
 button.addEventListener("click", sendValues);
+*/
