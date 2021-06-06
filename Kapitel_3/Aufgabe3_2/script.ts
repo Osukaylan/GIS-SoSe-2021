@@ -2,8 +2,6 @@ let url: string ;
 
 async function sendValues(): Promise<string> {
 
-    let values: FormData = new FormData(document.forms[0]);
-    console.log(": " + values.get("name"));
     let userData: FormData = new FormData(document.forms[0]);
     let query: URLSearchParams = new URLSearchParams(<any>userData);
     url += "?" + query.toString();
@@ -13,12 +11,14 @@ async function sendValues(): Promise<string> {
 }
 
 async function showhtmlVersion(): Promise<void> {
-    url = "https://kapitel3gissose2021.herokuapp.com/html";
+    //url = "https://kapitel3gissose2021.herokuapp.com/html";
+    url = "http://127.0.0.1:8122/html";
     console.log(await sendValues());
 }
 
 async function showjsonVersion(): Promise<void> {
-url = "https://kapitel3gissose2021.herokuapp.com/json";
+//url = "https://kapitel3gissose2021.herokuapp.com/json";
+url = "http://127.0.0.1:8122/json";
 console.log(await sendValues());
 }
 
