@@ -9,13 +9,13 @@ async function sendValues() {
     return responseText;
 }
 async function showhtmlVersion() {
-    //url = "https://kapitel3gissose2021.herokuapp.com/html";
-    url = "http://127.0.0.1:8122/html";
+    url = "https://kapitel3gissose2021.herokuapp.com/html";
+    //url = "http://127.0.0.1:8122/html";
     console.log(await sendValues());
 }
 async function showjsonVersion() {
-    //url = "https://kapitel3gissose2021.herokuapp.com/json";
-    url = "http://127.0.0.1:8122/json";
+    url = "https://kapitel3gissose2021.herokuapp.com/json";
+    //url = "http://127.0.0.1:8122/json";
     console.log(await sendValues());
 }
 function showServerResponse(response) {

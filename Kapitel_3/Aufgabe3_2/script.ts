@@ -1,4 +1,4 @@
-let url: string ;
+let url: string;
 
 async function sendValues(): Promise<string> {
 
@@ -11,15 +11,15 @@ async function sendValues(): Promise<string> {
 }
 
 async function showhtmlVersion(): Promise<void> {
-    //url = "https://kapitel3gissose2021.herokuapp.com/html";
-    url = "http://127.0.0.1:8122/html";
+    url = "https://kapitel3gissose2021.herokuapp.com/html";
+    //url = "http://127.0.0.1:8122/html";
     console.log(await sendValues());
 }
 
 async function showjsonVersion(): Promise<void> {
-//url = "https://kapitel3gissose2021.herokuapp.com/json";
-url = "http://127.0.0.1:8122/json";
-console.log(await sendValues());
+    url = "https://kapitel3gissose2021.herokuapp.com/json";
+    //url = "http://127.0.0.1:8122/json";
+    console.log(await sendValues());
 }
 
 function showServerResponse(response: string): void {
