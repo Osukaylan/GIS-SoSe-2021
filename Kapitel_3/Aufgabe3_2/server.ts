@@ -27,6 +27,7 @@ export namespace Aufgabe3_1 {
             _response.end();
 
         } else if (refUrl.pathname == "/json") {
+            console.log("Json works");
             let responseJson: string = JSON.stringify(url.query);
 
             _response.write(responseJson);                      //write what is getting requested
