@@ -20,18 +20,18 @@ export namespace Aufgabe3_1 {
         let refUrl: URL = new URL(_request.url, "https://kapitel3gissose2021.herokuapp.com/");
         var url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         if (refUrl.pathname == "/html") {
-            console.log("I work until here");
+            console.log("I work until here");       //just for me to see in heroku if it works
             for (let key in url.query) {
                 _response.write("<p>" + key + " : " + url.query[key] + "<p/>");
             }
             _response.end();
 
         } else if (refUrl.pathname == "/json") {
-            console.log("Json works");
-            let responseJson: string = JSON.stringify(url.query);
+            console.log("Json works");                  //just for me to see in heroku if it works
+            let responseJson: string = JSON.stringify(url.query);   
 
             _response.write(responseJson);                      //write what is getting requested
             _response.end();            // response finished
         }
-    }
+    }   
 }
