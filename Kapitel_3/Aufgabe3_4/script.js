@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+{
     let saveButton = document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
     let showButton = document.getElementById("showfeedbacks");
@@ -23,10 +25,9 @@
         let response = await fetch(url);
         console.log(response);
         let displayResponse = await response.text();
+        console.log(serverAnswer);
         serverAnswer.innerText = displayResponse;
         console.log(displayResponse);
-        document.getElementById("feedback").innerText = "";
-        document.getElementById("u_input").innerText = "";
     }
     async function ClickToShowFeedback() {
         herokuURL();
@@ -67,4 +68,5 @@
         }
         console.log(showresponse);
     }
+}
 //# sourceMappingURL=script.js.map

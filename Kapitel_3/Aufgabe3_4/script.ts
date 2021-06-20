@@ -27,11 +27,9 @@ import { Feedback } from "./interface";
         let response: Response = await fetch(url);
         console.log(response);
         let displayResponse: string = await response.text();
+        console.log(serverAnswer);
         serverAnswer.innerText = displayResponse;
         console.log(displayResponse);
-        
-        document.getElementById("feedback").innerText = "";
-        document.getElementById("u_input").innerText = "";
     }
     async function ClickToShowFeedback(): Promise<void> {
         herokuURL();

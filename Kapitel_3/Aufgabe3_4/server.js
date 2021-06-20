@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.Aufgabe3_4 = void 0;
 const Http = require("http");
 const Url = require("url");
