@@ -3,7 +3,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 import { Feedback } from "./interface";
 
-export namespace Kapiteldreivier {
+export namespace Aufgabe3_4 {
     let feedbackInformation: Mongo.Collection;
     let result: Feedback[];
     //let databaseURL: string = "mongodb://localhost:27017"; local check

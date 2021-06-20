@@ -1,11 +1,10 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kapiteldreivier = void 0;
+exports.Aufgabe3_4 = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var Kapiteldreivier;
-(function (Kapiteldreivier) {
+var Aufgabe3_4;
+(function (Aufgabe3_4) {
     let feedbackInformation;
     let result;
     //let databaseURL: string = "mongodb://localhost:27017"; local check
@@ -62,5 +61,5 @@ var Kapiteldreivier;
         _response.end();
         console.log(_response + " I cant take it anymore, just go already!");
     }
-})(Kapiteldreivier = exports.Kapiteldreivier || (exports.Kapiteldreivier = {}));
+})(Aufgabe3_4 = exports.Aufgabe3_4 || (exports.Aufgabe3_4 = {}));
 //# sourceMappingURL=server.js.map

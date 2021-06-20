@@ -1,4 +1,5 @@
 "use strict";
+
     let saveButton = document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
     let showButton = document.getElementById("showfeedbacks");
@@ -31,8 +32,11 @@
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
+        console.log(url);
         let response = await fetch(url);
+        console.log(response);
         let showresponse = await response.json();
+        console.log(showresponse);
         for (let i in showresponse) {
             let query = showresponse[i];
             let divvar = document.createElement("div");
@@ -62,4 +66,5 @@
         }
         console.log(showresponse);
     }
+
 //# sourceMappingURL=script.js.map

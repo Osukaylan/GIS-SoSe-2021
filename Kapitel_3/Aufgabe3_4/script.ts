@@ -36,8 +36,11 @@ import { Feedback } from "./interface";
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
+        console.log(url);
         let response: Response = await fetch(url);
+        console.log(response);
         let showresponse: Feedback[] = await response.json();
+        console.log(showresponse);
         for (let i in showresponse) {
             let query: Feedback = showresponse[i];
             let divvar: HTMLDivElement = document.createElement("div");
