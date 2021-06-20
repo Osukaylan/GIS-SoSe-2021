@@ -7,7 +7,7 @@ import { Feedback } from "./interface";
     saveButton.addEventListener("click", ClickToSaveFeedback);
     let showButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
-    let serverAnswer: HTMLDivElement = <HTMLDivElement>document.getElementById("Feedbacks");
+    let serverAnswer: HTMLDivElement = <HTMLDivElement>document.getElementById("feedbacks");
     //let url: string;
     let urlsearchParameters: URLSearchParams;
 
