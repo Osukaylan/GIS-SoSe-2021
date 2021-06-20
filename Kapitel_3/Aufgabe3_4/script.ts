@@ -2,17 +2,16 @@ import { ObjectID } from "mongodb";
 import { Feedback } from "./interface";
 
 {
-
     let saveButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
     let showButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
     let serverAnswer: HTMLDivElement = <HTMLDivElement>document.getElementById("feedbacks");
-    //let url: string;
+    let url: string;
     let urlsearchParameters: URLSearchParams;
 
-    function herokuURL(): string {
-        return "https://kapitel3gissose2021.herokuapp.com";
+    function herokuURL(): void {
+        url = "https://kapitel3gissose2021.herokuapp.com";
     }
     function getFormData(): void {
         let formData: FormData = new FormData(document.forms[0]);
@@ -20,7 +19,7 @@ import { Feedback } from "./interface";
         urlsearchParameters = new URLSearchParams(<any>formData);
     }
     async function ClickToSaveFeedback(): Promise<void> {
-        let url: string = herokuURL();
+        herokuURL();
         getFormData();
         console.log("Your shit has been saved");
         url += "/saveFeedback" + "?" + urlsearchParameters.toString();
@@ -30,9 +29,12 @@ import { Feedback } from "./interface";
         let displayResponse: string = await response.text();
         serverAnswer.innerText = displayResponse;
         console.log(displayResponse);
+        
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("u_input").innerText = "";
     }
     async function ClickToShowFeedback(): Promise<void> {
-        let url: string = herokuURL();
+        herokuURL();
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
@@ -57,7 +59,7 @@ import { Feedback } from "./interface";
             deleteButton.addEventListener("click", ClickToDeleteFeedback);
             divvar.appendChild(deleteButton);
             async function ClickToDeleteFeedback(): Promise<void> {
-                let url: string = herokuURL();
+                herokuURL();
                 console.log("clicked");
                 let mongoid: ObjectID = query._id;
                 console.log("id: " + mongoid.toString());
