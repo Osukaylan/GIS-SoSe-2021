@@ -4,8 +4,8 @@
     const showButton = document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
     const serverAnswer = document.getElementById("Feedbacks");
-    const url;
-    const urlsearchParameters;
+    const url = "";
+    const urlsearchParameters = new URLSearchParams();
     function herokuURL() {
         url = "https://kapitel3gissose2021.herokuapp.com/";
     }
