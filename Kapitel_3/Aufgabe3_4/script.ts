@@ -12,7 +12,7 @@ import { Feedback } from "./interface";
     let urlsearchParameters: URLSearchParams;
 
     function herokuURL(): string {
-        return "https://kapitel3gissose2021.herokuapp.com/";
+        return "https://kapitel3gissose2021.herokuapp.com";
     }
     function getFormData(): void {
         let formData: FormData = new FormData(document.forms[0]);
