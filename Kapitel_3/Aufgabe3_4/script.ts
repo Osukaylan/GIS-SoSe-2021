@@ -8,11 +8,11 @@ import { Feedback } from "./interface";
     let showButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
     let serverAnswer: HTMLDivElement = <HTMLDivElement>document.getElementById("Feedbacks");
-    let url: string;
+    //let url: string;
     let urlsearchParameters: URLSearchParams;
 
-    function herokuURL(): void {
-        url = "https://kapitel3gissose2021.herokuapp.com/";
+    function herokuURL(): string {
+        return "https://kapitel3gissose2021.herokuapp.com/";
     }
     function getFormData(): void {
         let formData: FormData = new FormData(document.forms[0]);
@@ -20,7 +20,7 @@ import { Feedback } from "./interface";
         urlsearchParameters = new URLSearchParams(<any>formData);
     }
     async function ClickToSaveFeedback(): Promise<void> {
-        herokuURL();
+        let url: string = herokuURL();
         getFormData();
         console.log("Your shit has been saved");
         url += "/saveFeedback" + "?" + urlsearchParameters.toString();
@@ -28,10 +28,9 @@ import { Feedback } from "./interface";
         let displayResponse: string = await response.text();
         serverAnswer.innerText = displayResponse;
         console.log(displayResponse);
-        herokuURL();
     }
     async function ClickToShowFeedback(): Promise<void> {
-        herokuURL();
+        let url: string = herokuURL();
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
@@ -53,7 +52,7 @@ import { Feedback } from "./interface";
             deleteButton.addEventListener("click", ClickToDeleteFeedback);
             divvar.appendChild(deleteButton);
             async function ClickToDeleteFeedback(): Promise<void> {
-                herokuURL();
+                let url: string = herokuURL();
                 console.log("clicked");
                 let mongoid: ObjectID = query._id;
                 console.log("id: " + mongoid.toString());

@@ -1,13 +1,14 @@
 "use strict";
-    const saveButton = document.getElementById("savefeedback");
+
+    let saveButton = document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
-    const showButton = document.getElementById("showfeedbacks");
+    let showButton = document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
-    const serverAnswer = document.getElementById("Feedbacks");
-    const url = "";
-    const urlsearchParameters = new URLSearchParams();
+    let serverAnswer = document.getElementById("Feedbacks");
+    //let url: string;
+    let urlsearchParameters;
     function herokuURL() {
-        url = "https://kapitel3gissose2021.herokuapp.com/";
+        return "https://kapitel3gissose2021.herokuapp.com/";
     }
     function getFormData() {
         let formData = new FormData(document.forms[0]);
@@ -15,7 +16,7 @@
         urlsearchParameters = new URLSearchParams(formData);
     }
     async function ClickToSaveFeedback() {
-        herokuURL();
+        let url = herokuURL();
         getFormData();
         console.log("Your shit has been saved");
         url += "/saveFeedback" + "?" + urlsearchParameters.toString();
@@ -23,10 +24,9 @@
         let displayResponse = await response.text();
         serverAnswer.innerText = displayResponse;
         console.log(displayResponse);
-        herokuURL();
     }
     async function ClickToShowFeedback() {
-        herokuURL();
+        let url = herokuURL();
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
@@ -48,7 +48,7 @@
             deleteButton.addEventListener("click", ClickToDeleteFeedback);
             divvar.appendChild(deleteButton);
             async function ClickToDeleteFeedback() {
-                herokuURL();
+                let url = herokuURL();
                 console.log("clicked");
                 let mongoid = query._id;
                 console.log("id: " + mongoid.toString());
