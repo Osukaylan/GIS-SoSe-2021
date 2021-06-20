@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        var exports = {};
+    </script>
+    <script src="script/script.js" defer></script>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <title>Aufgabe 3.4</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>Feedback to me</h1>
+        <p>
+        <h3>
+            Write your feedback about me here.
+        </h3>
+        </p>
+        <form id="feedbackform">
+            <fieldset>
+                <div>
+                    <legend>Username</legend>
+                    <input type="text" name="u-input">
+                </div>
+
+                <div>
+                    <legend>Freitext</legend>
+                    <textarea type="rant" name="rant" rows="3" cols="50" required></textarea>
+                </div>
+                <span>
+                    <button type="button" id="savefeedback">Send!</button>
+                    <button type="reset" id="deletefeedback">Delete!</button>
+
+                </span>
+            </fieldset>
+        </form>
+        <br>
+        <button type="button" id="showfeedbacks">Display feedback</button>
+
+        <div id="feedbacks">
+
+        </div>
+    </main>
+
+</body>
+
+</html>

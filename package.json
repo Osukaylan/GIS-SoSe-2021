@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "@types/node": "^15.6.1"
+    "@types/mongodb": "^3.6.18",
+    "@types/node": "^15.6.1",
+    "mongodb": "^3.6.9"
   },
   "name": "gissose2021erdem",
   "description": "hello world",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "start": "node Kapitel_3/Aufgabe3_2/server.js"
   },

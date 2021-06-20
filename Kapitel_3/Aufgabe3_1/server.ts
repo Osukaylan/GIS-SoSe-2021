@@ -23,8 +23,8 @@ export namespace Aufgabe3_1 {
         
         _response.setHeader("content-type", "text/html; charset=utf-8"); 
         _response.setHeader("Access-Control-Allow-Origin", "*"); //give everyone access
-        _response.write(_request.url);
-        _response.end(); 
+        _response.write(_request.url);          //server antwort ist jetzt die anfrage url
+        _response.end();                    //antwort ist fertig, sag empfänger es kommt kein code
     }
     
 }
