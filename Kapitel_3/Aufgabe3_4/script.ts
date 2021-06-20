@@ -23,24 +23,17 @@ import { Feedback } from "./interface";
         getFormData();
         console.log("Your shit has been saved");
         url += "/saveFeedback" + "?" + urlsearchParameters.toString();
-        console.log(url);
         let response: Response = await fetch(url);
-        console.log(response);
         let displayResponse: string = await response.text();
-        console.log(serverAnswer);
         serverAnswer.innerText = displayResponse;
-        console.log(displayResponse);
     }
     async function ClickToShowFeedback(): Promise<void> {
         herokuURL();
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
-        console.log(url);
         let response: Response = await fetch(url);
-        console.log(response);
-        let showresponse: Feedback[] = await response.json();
-        console.log(showresponse);
+        let showresponse: Feedback[] = await response.json();;
         for (let i in showresponse) {
             let query: Feedback = showresponse[i];
             let divvar: HTMLDivElement = document.createElement("div");

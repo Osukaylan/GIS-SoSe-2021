@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js" defer></script>
     <script>
-        var exports = {};
+        let exports = {};
     </script>
     <link rel="stylesheet" href="./stylesheet.css">
     <title>Aufgabe 3.4</title>
@@ -17,26 +17,26 @@
     <header>
     </header>
     <main>
-        <h1>Feedback to me</h1>
+        <h1 class="textabove">Feedback to me</h1>
         <p>
-        <h3>
+        <h3 class="textabove">
             Write your feedback about me here.
         </h3>
         </p>
-        <form id="feedbackform">
+        <form id="feedbackform" class="feedbackformClass">
             <fieldset>
                 <div>
-                    <legend>Username</legend>
-                    <input type="text" name="u_input">
+                    <legend class="uname_and_feedback">Username</legend>
+                    <textarea type="text" name="u_input" rows="1" cols="75" id="areatextname"></textarea>
                 </div>
 
                 <div>
-                    <legend>Feedback</legend>
-                    <textarea name="feedback" rows="3" cols="50" required></textarea>
+                    <legend class="uname_and_feedback">Feedback</legend>
+                    <textarea name="feedback" rows="6" cols="75" id="areatext" required></textarea>
                 </div>
 
-                <button type="button" id="savefeedback">Send!</button>
-                <button type="reset" id="deletefeedback">Reset textfield!</button>
+                <button type="button" id="savefeedback" class="savefeedbackButton">Send!</button>
+                <button type="reset" id="deletefeedback" class="resetfeedbackButton">Reset textfield!</button>
 
 
             </fieldset>
@@ -44,7 +44,7 @@
         <br>
         <button type="button" id="showfeedbacks">Display feedback</button>
 
-        <div id="feedbacks">
+        <div id="feedbacks" class="feedbacksDiv">
 
         </div>
     </main>

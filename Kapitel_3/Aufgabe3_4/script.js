@@ -21,24 +21,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
         getFormData();
         console.log("Your shit has been saved");
         url += "/saveFeedback" + "?" + urlsearchParameters.toString();
-        console.log(url);
         let response = await fetch(url);
-        console.log(response);
         let displayResponse = await response.text();
-        console.log(serverAnswer);
         serverAnswer.innerText = displayResponse;
-        console.log(displayResponse);
     }
     async function ClickToShowFeedback() {
         herokuURL();
         serverAnswer.innerHTML = "";
         console.log("The world..");
         url += "/showFeedback" + "?";
-        console.log(url);
         let response = await fetch(url);
-        console.log(response);
         let showresponse = await response.json();
-        console.log(showresponse);
+        ;
         for (let i in showresponse) {
             let query = showresponse[i];
             let divvar = document.createElement("div");
