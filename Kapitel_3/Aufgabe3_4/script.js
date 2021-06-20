@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-{
     let saveButton = document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
     let showButton = document.getElementById("showfeedbacks");
@@ -63,5 +61,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
         }
         console.log(showresponse);
     }
-}
+
 //# sourceMappingURL=script.js.map
