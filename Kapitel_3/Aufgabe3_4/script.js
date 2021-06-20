@@ -1,11 +1,11 @@
 "use strict";
-    let saveButton = document.getElementById("savefeedback");
+    const saveButton = document.getElementById("savefeedback");
     saveButton.addEventListener("click", ClickToSaveFeedback);
-    let showButton = document.getElementById("showfeedbacks");
+    const showButton = document.getElementById("showfeedbacks");
     showButton.addEventListener("click", ClickToShowFeedback);
-    let serverAnswer = document.getElementById("Feedbacks");
-    let url;
-    let urlsearchParameters;
+    const serverAnswer = document.getElementById("Feedbacks");
+    const url;
+    const urlsearchParameters;
     function herokuURL() {
         url = "https://kapitel3gissose2021.herokuapp.com/";
     }
