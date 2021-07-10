@@ -252,6 +252,7 @@
             for (let i: number = 0; i < 16; i++) {
                 let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString());
                 background.style.opacity = "100";
+                background.style.backgroundColor = "#99cc00";
             }
         }
 

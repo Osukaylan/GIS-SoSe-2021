@@ -184,6 +184,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         for (let i = 0; i < 16; i++) {
             let background = document.getElementById(i.toString());
             background.style.opacity = "100";
+            background.style.backgroundColor = "#99cc00";
         }
     }
     function position(_cardstoplay) {
