@@ -1,5 +1,3 @@
-export namespace Abgabe {
-
 
 
     //we are on admin.html
@@ -132,204 +130,202 @@ export namespace Abgabe {
 
     }
 
-}
+    //Highscore Page
+    if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 
-//Highscore Page
-if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
-
-    interface Scores {
-        name: string;
-        time: string;
-    }
-
-    async function displayAllScores(): Promise<void> {
-
-        let data: FormData = new FormData(document.forms[0]);
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/scoreDisplay"; //Button bestaetigen gedrückt 
-
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
-        let query: URLSearchParams = new URLSearchParams(<any>data);
-        url = url + "?" + query.toString();
-        let response: Response = await fetch(url);
-        let output: Scores[] = await response.json();
-
-        let sortedScores: Scores[] = output;
-
-        sort(sortedScores);
-        empty();
-
-        for (let i: number = 0; i < 10; i++) {
-            let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "e");
-            let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.createElement(i + "r");
-            let name: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
-            name.innerText = sortedScores[i].name + ": ";
-            rowName.appendChild(name);
-
-            let time: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
-            time.innerText = sortedScores[i].time + " s";
-            rowTime.appendChild(time);
+        interface Scores {
+            name: string;
+            time: string;
         }
-    }
 
-    let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showScores");
-    scoreButton.addEventListener("click", displayAllScores);
-    let newGamebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("newGame");
-    newGamebutton.addEventListener("click", newGame);
+        async function displayAllScores(): Promise<void> {
 
-    function sort(_sortArray: Scores[]): Scores[] {
-        let savethissomewhere: Scores;
-        for (let j: number = 1; j < _sortArray.length; j++) {
-            for (let q: number = _sortArray.length - 1; q >= j; q--) {
-                if (parseInt(_sortArray[q - 1].time) > parseInt(_sortArray[q].time)) {
-                    savethissomewhere = _sortArray[q - 1];
-                    _sortArray[q - 1] = _sortArray[q];
-                    _sortArray[q] = savethissomewhere;
+            let data: FormData = new FormData(document.forms[0]);
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            url += "/scoreDisplay"; //Button bestaetigen gedrückt 
+
+            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
+            //tslint:disable-next-line 
+            let query: URLSearchParams = new URLSearchParams(<any>data);
+            url = url + "?" + query.toString();
+            let response: Response = await fetch(url);
+            let output: Scores[] = await response.json();
+
+            let sortedScores: Scores[] = output;
+
+            sort(sortedScores);
+            empty();
+
+            for (let i: number = 0; i < 10; i++) {
+                let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "e");
+                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.createElement(i + "r");
+                let name: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
+                name.innerText = sortedScores[i].name + ": ";
+                rowName.appendChild(name);
+
+                let time: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
+                time.innerText = sortedScores[i].time + " s";
+                rowTime.appendChild(time);
+            }
+        }
+
+        let scoreButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showScores");
+        scoreButton.addEventListener("click", displayAllScores);
+        let newGamebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("newGame");
+        newGamebutton.addEventListener("click", newGame);
+
+        function sort(_sortArray: Scores[]): Scores[] {
+            let savethissomewhere: Scores;
+            for (let j: number = 1; j < _sortArray.length; j++) {
+                for (let q: number = _sortArray.length - 1; q >= j; q--) {
+                    if (parseInt(_sortArray[q - 1].time) > parseInt(_sortArray[q].time)) {
+                        savethissomewhere = _sortArray[q - 1];
+                        _sortArray[q - 1] = _sortArray[q];
+                        _sortArray[q] = savethissomewhere;
+                    }
                 }
             }
-        }
-        //Quelle: Semester eins in programmieren
-        return _sortArray;
-
-    }
-    function empty(): void {
-        for (let i: number = 0; i < 10; i++) { 
-            let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("e" + i); 
-            let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("r" + i);
-
-            rowName.innerHTML = "";
-            rowTime.innerHTML = "";
+            //Quelle: Semester eins in programmieren
+            return _sortArray;
 
         }
-    }
+        function empty(): void {
+            for (let i: number = 0; i < 10; i++) { 
+                let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("e" + i); 
+                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("r" + i);
 
-    function newGame(): void {
-        window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
-    }
+                rowName.innerHTML = "";
+                rowTime.innerHTML = "";
 
-}
-
-// on the game page
-if ((document.querySelector("title").getAttribute("id") == "Memory")) {
-
-    let couples: number = 0;
-
-    async function displayCards(): Promise<void> {
-
-        let data: FormData = new FormData(document.forms[0]);
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/memorygame"; //Button bestaetigen gedrückt 
-        let query: URLSearchParams = new URLSearchParams(<any>data);
-        url = url + "?" + query.toString(); //in String umwandeln 
-        let response: Response = await fetch(url);
-        let output: CardInterface[] = await response.json();
-        console.log(output);
-
-        let cardstoplay: CardInterface[] = [];
-
-        for (let i: number = 0; i < 10; i++) {
-            let whichCard: number = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
-            let firstCard: CardInterface = output[whichCard];
-            let secondCard: CardInterface = firstCard;
-
-            cardstoplay.push(firstCard);
-            cardstoplay.push(secondCard);
-            //Quelle: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-            //removing the card I used out of the array to prevent duplications
-            output.splice(whichCard, 1);
+            }
         }
 
-        showBackground();
-        position(cardstoplay);
-
-        //measure time since start
-        let date: Date = new Date();
-        let timeSinceStart: number = date.getTime();
-        sessionStorage.setItem("start", timeSinceStart.toString());
-        console.log(timeSinceStart);
-    }
-
-    let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
-    playButton.addEventListener("click", displayCards);
-
-    function showBackground(): void {
-        for (let i: number = 1; 1 < 17; i++) {
-            let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "");
-            background.style.opacity = "100";
+        function newGame(): void {
+            window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
         }
+
     }
 
-    function position(_cardstoplay: CardInterface[]): void {
+    // on the game page
+    if ((document.querySelector("title").getAttribute("id") == "Memory")) {
 
-        //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
+        let couples: number = 0;
 
-        for (let i: number = 0; i < 16; i++) {
-            let card: HTMLImageElement = cardImage(_cardstoplay[i]);
-            let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + 1 + ""); //Tablecell is got with random position
-            place.appendChild(card);
+        async function displayCards(): Promise<void> {
+
+            let data: FormData = new FormData(document.forms[0]);
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            url += "/memorygame"; //Button bestaetigen gedrückt 
+            let query: URLSearchParams = new URLSearchParams(<any>data);
+            url = url + "?" + query.toString(); //in String umwandeln 
+            let response: Response = await fetch(url);
+            let output: CardInterface[] = await response.json();
+            console.log(output);
+
+            let cardstoplay: CardInterface[] = [];
+
+            for (let i: number = 0; i < 10; i++) {
+                let whichCard: number = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
+                let firstCard: CardInterface = output[whichCard];
+                let secondCard: CardInterface = firstCard;
+
+                cardstoplay.push(firstCard);
+                cardstoplay.push(secondCard);
+                //Quelle: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+                //removing the card I used out of the array to prevent duplications
+                output.splice(whichCard, 1);
+            }
+
+            showBackground();
+            position(cardstoplay);
+
+            //measure time since start
+            let date: Date = new Date();
+            let timeSinceStart: number = date.getTime();
+            sessionStorage.setItem("start", timeSinceStart.toString());
+            console.log(timeSinceStart);
         }
-    }
+
+        let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
+        playButton.addEventListener("click", displayCards);
+
+        function showBackground(): void {
+            for (let i: number = 1; 1 < 17; i++) {
+                let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "");
+                background.style.opacity = "100";
+            }
+        }
+
+        function position(_cardstoplay: CardInterface[]): void {
+
+            //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+            _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
+
+            for (let i: number = 1; i < 17; i++) {
+                let card: HTMLImageElement = cardImage(_cardstoplay[i]);
+                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + 1 + ""); //Tablecell is got with random position
+                place.appendChild(card);
+            }
+        }
 
 
-    function cardImage(_choice: CardInterface): HTMLImageElement {
+        function cardImage(_choice: CardInterface): HTMLImageElement {
 
-        let image: HTMLImageElement = document.createElement("img");
-        image.classList.add("Card");
-        image.src = _choice.imageSource;
-        image.addEventListener("click", revealCard);
-        image.style.opacity = "0"; //because card is still hidden
+            let image: HTMLImageElement = document.createElement("img");
+            image.classList.add("Card");
+            image.src = _choice.imageSource;
+            image.addEventListener("click", revealCard);
+            image.style.opacity = "0"; //because card is still hidden
 
-        return image;
-    }
+            return image;
+        }
 
-    let revealedCards: HTMLImageElement[] = []; //save revealed cards so you can compare
+        let revealedCards: HTMLImageElement[] = []; //save revealed cards so you can compare
 
-    function revealCard(_e: Event): void {
-        let revealed: HTMLImageElement = <HTMLImageElement>_e.target;
-        revealedCards.push(revealed);
-        revealed.style.opacity = "100"; //show card
+        function revealCard(_e: Event): void {
+            let revealed: HTMLImageElement = <HTMLImageElement>_e.target;
+            revealedCards.push(revealed);
+            revealed.style.opacity = "100"; //show card
 
-        if (revealedCards.length == 2) {
-            if (revealedCards[0].src == revealedCards[1].src) {
-                revealedCards = []; //empty array
-                couples += 1;
+            if (revealedCards.length == 2) {
+                if (revealedCards[0].src == revealedCards[1].src) {
+                    revealedCards = []; //empty array
+                    couples += 1;
 
-                if (couples == 8) {
-                    let date2: Date = new Date();
-                    let gameend: number = date2.getTime();
-                    console.log(gameend);
+                    if (couples == 8) {
+                        let date2: Date = new Date();
+                        let gameend: number = date2.getTime();
+                        console.log(gameend);
 
-                    let gametime: number = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide 1k for seconds
-                    sessionStorage.setItem("duration", gametime.toString());
-                    console.log(gametime);
-                    window.location.href = "YourScore.html"; //redirect to score page
-                    //https://www.w3schools.com/js/js_window_location.asp
+                        let gametime: number = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide 1k for seconds
+                        sessionStorage.setItem("duration", gametime.toString());
+                        console.log(gametime);
+                        window.location.href = "YourScore.html"; //redirect to score page
+                        //https://www.w3schools.com/js/js_window_location.asp
+                    }
+                }
+                else {
+                    setTimeout(unReveal, 1000);
+                    //https://www.w3schools.com/js/js_timing.asp
                 }
             }
-            else {
-                setTimeout(unReveal, 1000);
-                //https://www.w3schools.com/js/js_timing.asp
+            else if (revealedCards.length > 2) {
+                unReveal();
             }
         }
-        else if (revealedCards.length > 2) {
-            unReveal();
+
+        function unReveal(): void {
+            for (let i: number = 0; i < revealedCards.length; i++) {
+                revealedCards[i].style.opacity = "0";
+            }
+            revealedCards = []; //empty array again
         }
-    }
-
-    function unReveal(): void {
-        for (let i: number = 0; i < revealedCards.length; i++) {
-            revealedCards[i].style.opacity = "0";
+        interface CardInterface {
+            name: string;
+            imageSource: string;
         }
-        revealedCards = []; //empty array again
-    }
-    interface CardInterface {
-        name: string;
-        imageSource: string;
-    }
 
 
-}
+    }

@@ -76,8 +76,11 @@ async function MemoryGameDisplay(_url: string): Promise<CardInterface[]> {
 
     let images: Mongo.Collection = mongoClient.db("MemoryGame").collection("CardData"); //Collection aufrufen
     let cursor: Mongo.Cursor = images.find();
+    console.log(cursor);
+
     //return found datas of cards
     let cardsweplaywith: CardInterface[] = await cursor.toArray();
+    console.log(cardsweplaywith);
     return cardsweplaywith;
 }
 

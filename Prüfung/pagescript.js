@@ -1,102 +1,97 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Abgabe = void 0;
-var Abgabe;
-(function (Abgabe) {
-    //we are on admin.html
-    if ((document.querySelector("title").getAttribute("id") == "Admin")) {
-        async function showImages() {
-            let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/showMeTheCards"; //Button anzeigen/aktualisieren gedrückt 
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
-            let response = await fetch(url);
-            let output = await response.json(); //hier auf Antowrt mit Daten warten 
-            console.log(output);
-            let firstDiv = document.getElementById("showImages");
-            firstDiv.innerHTML = ""; //hier anzeigeDiv leeren bzw immmer überschreiben lassen 
-            for (let i = 0; i < output.length; i++) { //Datenarray durchgehen und alle anzeigen 
-                let div = cardData(output[i]);
-                firstDiv.appendChild(div);
-            }
-        }
-        let cardpicturesbutton = document.getElementById("showallcards"); //Button machen auf Admin
-        cardpicturesbutton.addEventListener("click", showImages);
-        function cardData(_cardo) {
-            let cardo = document.createElement("div");
-            cardo.classList.add("cardpicturedata");
-            let image = document.createElement("img");
-            image.src = _cardo.imageSource;
-            cardo.appendChild(image);
-            let namexd = document.createElement("p");
-            namexd.innerText = _cardo.name;
-            cardo.appendChild(namexd);
-            return cardo;
-        }
-        async function AddCard() {
-            let data = new FormData(document.forms[0]);
-            let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/addNewCards"; //Button hinzufügen gedrückt 
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
-            let query = new URLSearchParams(data);
-            url = url + "?" + query.toString();
-            let response = await fetch(url);
-            let output = await response.text();
-            console.log(output);
-            //reload current page
-            location.reload();
-        }
-        let buttonHinzu = document.getElementById("add"); //Button machen auf Admin
-        buttonHinzu.addEventListener("click", AddCard);
-        async function removeCard() {
-            let daten = new FormData(document.forms[1]);
-            let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/removeCards"; //Button löschen gedrückt 
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
-            let query = new URLSearchParams(daten);
-            url = url + "?" + query.toString();
-            let response = await fetch(url);
-            let output = await response.text();
-            console.log(output);
-            //reload page
-            location.reload();
-        }
-        let buttonRemoveCard = document.getElementById("remove"); //Button machen auf Admin
-        buttonRemoveCard.addEventListener("click", removeCard);
-    }
-    //YourScpre page
-    else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
-        let serverResponse = document.getElementById("serverresponse");
-        let time = sessionStorage.getItem("time");
-        let scoreTime = document.getElementById("time");
-        scoreTime.value = time; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
-        async function dataInput() {
-            let data = new FormData(document.forms[0]);
-            let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/saveRun"; //Button bestaetigen gedrückt 
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
-            let query = new URLSearchParams(data);
-            url = url + "?" + query.toString();
-            let response = await fetch(url);
-            let output = await response.text();
-            serverResponse.innerHTML = output;
-            setTimeout(redirection, 1800);
-            //Quelle: https://www.w3schools.com/js/js_timing.asp
-        }
-        let buttonScore = document.getElementById("confirm");
-        buttonScore.addEventListener("click", dataInput);
-        function redirection() {
-            window.location.href = "Highscore.html"; //Weiterleitung auf Highscoreseite
+//we are on admin.html
+if ((document.querySelector("title").getAttribute("id") == "Admin")) {
+    async function showImages() {
+        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+        url += "/showMeTheCards"; //Button anzeigen/aktualisieren gedrückt 
+        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
+        //tslint:disable-next-line 
+        let response = await fetch(url);
+        let output = await response.json(); //hier auf Antowrt mit Daten warten 
+        console.log(output);
+        let firstDiv = document.getElementById("showImages");
+        firstDiv.innerHTML = ""; //hier anzeigeDiv leeren bzw immmer überschreiben lassen 
+        for (let i = 0; i < output.length; i++) { //Datenarray durchgehen und alle anzeigen 
+            let div = cardData(output[i]);
+            firstDiv.appendChild(div);
         }
     }
-})(Abgabe = exports.Abgabe || (exports.Abgabe = {}));
+    let cardpicturesbutton = document.getElementById("showallcards"); //Button machen auf Admin
+    cardpicturesbutton.addEventListener("click", showImages);
+    function cardData(_cardo) {
+        let cardo = document.createElement("div");
+        cardo.classList.add("cardpicturedata");
+        let image = document.createElement("img");
+        image.src = _cardo.imageSource;
+        cardo.appendChild(image);
+        let namexd = document.createElement("p");
+        namexd.innerText = _cardo.name;
+        cardo.appendChild(namexd);
+        return cardo;
+    }
+    async function AddCard() {
+        let data = new FormData(document.forms[0]);
+        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+        url += "/addNewCards"; //Button hinzufügen gedrückt 
+        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
+        //tslint:disable-next-line 
+        let query = new URLSearchParams(data);
+        url = url + "?" + query.toString();
+        let response = await fetch(url);
+        let output = await response.text();
+        console.log(output);
+        //reload current page
+        location.reload();
+    }
+    let buttonHinzu = document.getElementById("add"); //Button machen auf Admin
+    buttonHinzu.addEventListener("click", AddCard);
+    async function removeCard() {
+        let daten = new FormData(document.forms[1]);
+        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+        url += "/removeCards"; //Button löschen gedrückt 
+        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
+        //tslint:disable-next-line 
+        let query = new URLSearchParams(daten);
+        url = url + "?" + query.toString();
+        let response = await fetch(url);
+        let output = await response.text();
+        console.log(output);
+        //reload page
+        location.reload();
+    }
+    let buttonRemoveCard = document.getElementById("remove"); //Button machen auf Admin
+    buttonRemoveCard.addEventListener("click", removeCard);
+}
+//YourScpre page
+else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
+    let serverResponse = document.getElementById("serverresponse");
+    let time = sessionStorage.getItem("time");
+    let scoreTime = document.getElementById("time");
+    scoreTime.value = time; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
+    async function dataInput() {
+        let data = new FormData(document.forms[0]);
+        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+        url += "/saveRun"; //Button bestaetigen gedrückt 
+        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
+        //tslint:disable-next-line 
+        let query = new URLSearchParams(data);
+        url = url + "?" + query.toString();
+        let response = await fetch(url);
+        let output = await response.text();
+        serverResponse.innerHTML = output;
+        setTimeout(redirection, 1800);
+        //Quelle: https://www.w3schools.com/js/js_timing.asp
+    }
+    let buttonScore = document.getElementById("confirm");
+    buttonScore.addEventListener("click", dataInput);
+    function redirection() {
+        window.location.href = "Highscore.html"; //Weiterleitung auf Highscoreseite
+    }
+}
 //Highscore Page
 if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
     async function displayAllScores() {
@@ -197,7 +192,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     function position(_cardstoplay) {
         //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
         _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
-        for (let i = 0; i < 16; i++) {
+        for (let i = 1; i < 17; i++) {
             let card = cardImage(_cardstoplay[i]);
             let place = document.getElementById(i + 1 + ""); //Tablecell is got with random position
             place.appendChild(card);

@@ -67,8 +67,10 @@ var Abgabe;
         await mongoClient.connect();
         let images = mongoClient.db("MemoryGame").collection("CardData"); //Collection aufrufen
         let cursor = images.find();
+        console.log(cursor);
         //return found datas of cards
         let cardsweplaywith = await cursor.toArray();
+        console.log(cardsweplaywith);
         return cardsweplaywith;
     }
     async function AddNewCards(_url, _card) {
