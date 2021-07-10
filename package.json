@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node Kapitel_3/Aufgabe3_4/server.js"
+    "start": "node Prüfung/server.js"
   },
   "repository": {
     "type": "git",
