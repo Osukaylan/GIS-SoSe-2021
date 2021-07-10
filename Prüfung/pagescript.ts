@@ -262,7 +262,7 @@
 
             for (let i: number = 1; i < 17; i++) {
                 let card: HTMLImageElement = cardImage(_cardstoplay[i]);
-                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + 1 + ""); //Tablecell is got with random position
+                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + ""); //Tablecell is got with random position
                 place.appendChild(card);
             }
         }

@@ -191,7 +191,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
         for (let i = 1; i < 17; i++) {
             let card = cardImage(_cardstoplay[i]);
-            let place = document.getElementById(i + 1 + ""); //Tablecell is got with random position
+            let place = document.getElementById(i + ""); //Tablecell is got with random position
             place.appendChild(card);
         }
     }
