@@ -249,7 +249,7 @@
         playButton.addEventListener("click", displayCards);
 
         function showBackground(): void {
-            for (let i: number = 1; 1 < 17; i++) {
+            for (let i: number = 1; i < 17; i++) {
                 let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "");
                 background.style.opacity = "100";
             }

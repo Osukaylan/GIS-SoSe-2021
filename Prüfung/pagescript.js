@@ -181,7 +181,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     let playButton = document.getElementById("play");
     playButton.addEventListener("click", displayCards);
     function showBackground() {
-        for (let i = 1; 1 < 17; i++) {
+        for (let i = 1; i < 17; i++) {
             let background = document.getElementById(i + "");
             background.style.opacity = "100";
         }
