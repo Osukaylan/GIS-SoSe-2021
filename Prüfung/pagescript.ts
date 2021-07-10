@@ -249,7 +249,7 @@
         playButton.addEventListener("click", displayCards);
 
         function showBackground(): void {
-            for (let i: number = 1; i < 17; i++) {
+            for (let i: number = 0; i < 16; i++) {
                 let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "");
                 background.style.opacity = "100";
             }
@@ -260,9 +260,9 @@
             //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
             _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
 
-            for (let i: number = 1; i < 17; i++) {
+            for (let i: number = 0; i < 16; i++) {
                 let card: HTMLImageElement = cardImage(_cardstoplay[i]);
-                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + ""); //Tablecell is got with random position
+                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + 1 + ""); //Tablecell is got with random position
                 place.appendChild(card);
             }
         }
