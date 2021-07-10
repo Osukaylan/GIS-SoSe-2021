@@ -2,22 +2,21 @@
 //we are on admin.html
 if ((document.querySelector("title").getAttribute("id") == "Admin")) {
     async function showImages() {
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/showMeTheCards"; //Button anzeigen/aktualisieren gedrückt 
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
+        //establish heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100"; //local testing
+        url += "/showMeTheCards";
         let response = await fetch(url);
-        let output = await response.json(); //hier auf Antowrt mit Daten warten 
+        let output = await response.json(); //wait for response of all cards then load
         console.log(output);
         let firstDiv = document.getElementById("showImages");
-        firstDiv.innerHTML = ""; //hier anzeigeDiv leeren bzw immmer überschreiben lassen 
-        for (let i = 0; i < output.length; i++) { //Datenarray durchgehen und alle anzeigen 
+        firstDiv.innerHTML = ""; //clean the firstDiv
+        for (let i = 0; i < output.length; i++) { //go through array of .length
             let div = cardData(output[i]);
             firstDiv.appendChild(div);
         }
     }
-    let cardpicturesbutton = document.getElementById("showallcards"); //Button machen auf Admin
+    let cardpicturesbutton = document.getElementById("showallcards");
     cardpicturesbutton.addEventListener("click", showImages);
     function cardData(_cardo) {
         let cardo = document.createElement("div");
@@ -32,11 +31,10 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
     }
     async function AddCard() {
         let data = new FormData(document.forms[0]);
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/addNewCards"; //Button hinzufügen gedrückt 
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
+        //establish heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100";  //local testing
+        url += "/addNewCards";
         let query = new URLSearchParams(data);
         url = url + "?" + query.toString();
         let response = await fetch(url);
@@ -45,15 +43,14 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
         //reload current page
         location.reload();
     }
-    let buttonHinzu = document.getElementById("add"); //Button machen auf Admin
+    let buttonHinzu = document.getElementById("add");
     buttonHinzu.addEventListener("click", AddCard);
     async function removeCard() {
         let daten = new FormData(document.forms[1]);
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/removeCards"; //Button löschen gedrückt 
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
+        //establish heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100"; //for local testings 
+        url += "/removeCards";
         let query = new URLSearchParams(daten);
         url = url + "?" + query.toString();
         let response = await fetch(url);
@@ -62,22 +59,21 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
         //reload page
         location.reload();
     }
-    let buttonRemoveCard = document.getElementById("remove"); //Button machen auf Admin
+    let buttonRemoveCard = document.getElementById("remove");
     buttonRemoveCard.addEventListener("click", removeCard);
 }
 //YourScpre page
 else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
     let serverResponse = document.getElementById("serverresponse");
-    let time = sessionStorage.getItem("time");
-    let scoreTime = document.getElementById("time");
-    scoreTime.value = time; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
+    let time = sessionStorage.getItem("duration");
+    let scoreTime = document.getElementById("duration");
+    scoreTime.value = time; //save the scoretime into the time element
     async function dataInput() {
         let data = new FormData(document.forms[0]);
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/saveRun"; //Button bestaetigen gedrückt 
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
+        //establish heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100"; //local test
+        url += "/saveRun"; // 
         let query = new URLSearchParams(data);
         url = url + "?" + query.toString();
         let response = await fetch(url);
@@ -89,7 +85,7 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
     let buttonScore = document.getElementById("confirm");
     buttonScore.addEventListener("click", dataInput);
     function redirection() {
-        window.location.href = "Highscore.html"; //Weiterleitung auf Highscoreseite
+        window.location.href = "Highscore.html"; //redirect to highscore page
     }
 }
 //Highscore Page

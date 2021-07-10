@@ -10,27 +10,25 @@
         }
 
         async function showImages(): Promise<void> {
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/showMeTheCards"; //Button anzeigen/aktualisieren gedrückt 
-
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
+            //establish heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; 
+            //let url: RequestInfo = "http://localhost:8100"; //local testing
+            url += "/showMeTheCards"; 
             let response: Response = await fetch(url);
-            let output: CardInterface[] = await response.json(); //hier auf Antowrt mit Daten warten 
+            let output: CardInterface[] = await response.json(); //wait for response of all cards then load
             console.log(output);
 
 
             let firstDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("showImages");
-            firstDiv.innerHTML = ""; //hier anzeigeDiv leeren bzw immmer überschreiben lassen 
+            firstDiv.innerHTML = ""; //clean the firstDiv
 
-            for (let i: number = 0; i < output.length; i++) { //Datenarray durchgehen und alle anzeigen 
+            for (let i: number = 0; i < output.length; i++) { //go through array of .length
                 let div: HTMLDivElement = cardData(output[i]);
                 firstDiv.appendChild(div);
             }
         }
 
-        let cardpicturesbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showallcards"); //Button machen auf Admin
+        let cardpicturesbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("showallcards");
         cardpicturesbutton.addEventListener("click", showImages);
 
         function cardData(_cardo: CardInterface): HTMLDivElement {
@@ -47,14 +45,12 @@
         }
 
 
-        async function AddCard(): Promise<void> { //Name und URL eingeben und abschicken 
+        async function AddCard(): Promise<void> { 
             let data: FormData = new FormData(document.forms[0]);
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/addNewCards"; //Button hinzufügen gedrückt 
-
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
+            //establish heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+            //let url: RequestInfo = "http://localhost:8100";  //local testing
+            url += "/addNewCards"; 
             let query: URLSearchParams = new URLSearchParams(<any>data);
             url = url + "?" + query.toString();
             let response: Response = await fetch(url);
@@ -65,17 +61,15 @@
 
         }
 
-        let buttonHinzu: HTMLButtonElement = <HTMLButtonElement>document.getElementById("add"); //Button machen auf Admin
+        let buttonHinzu: HTMLButtonElement = <HTMLButtonElement>document.getElementById("add");
         buttonHinzu.addEventListener("click", AddCard);
 
-        async function removeCard(): Promise<void> { //Name eingeben und abschicken 
+        async function removeCard(): Promise<void> { 
             let daten: FormData = new FormData(document.forms[1]);
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/removeCards"; //Button löschen gedrückt 
-
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
+            //establish heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+            //let url: RequestInfo = "http://localhost:8100"; //for local testings 
+            url += "/removeCards";
             let query: URLSearchParams = new URLSearchParams(<any>daten);
             url = url + "?" + query.toString();
             let response: Response = await fetch(url);
@@ -86,7 +80,7 @@
 
         }
 
-        let buttonRemoveCard: HTMLButtonElement = <HTMLButtonElement>document.getElementById("remove"); //Button machen auf Admin
+        let buttonRemoveCard: HTMLButtonElement = <HTMLButtonElement>document.getElementById("remove"); 
         buttonRemoveCard.addEventListener("click", removeCard);
 
     }
@@ -95,20 +89,19 @@
     else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 
         let serverResponse: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverresponse");
-        let time: string = sessionStorage.getItem("time");
+        let time: string = sessionStorage.getItem("duration");
 
-        let scoreTime: HTMLInputElement = <HTMLInputElement>document.getElementById("time");
-        scoreTime.value = time; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
+        let scoreTime: HTMLInputElement = <HTMLInputElement>document.getElementById("duration");
+        scoreTime.value = time; //save the scoretime into the time element
 
 
-        async function dataInput(): Promise<void> { //Name und Score eingeben und abschicken an Datenbank
+        async function dataInput(): Promise<void> { //name and score are input into database
             let data: FormData = new FormData(document.forms[0]);
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/saveRun"; //Button bestaetigen gedrückt 
+            //establish heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; 
+            //let url: RequestInfo = "http://localhost:8100"; //local test
+            url += "/saveRun"; // 
 
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
             let query: URLSearchParams = new URLSearchParams(<any>data);
             url = url + "?" + query.toString();
             let response: Response = await fetch(url);
@@ -124,7 +117,7 @@
         buttonScore.addEventListener("click", dataInput);
 
         function redirection(): void {
-            window.location.href = "Highscore.html"; //Weiterleitung auf Highscoreseite
+            window.location.href = "Highscore.html"; //redirect to highscore page
         }
 
 
