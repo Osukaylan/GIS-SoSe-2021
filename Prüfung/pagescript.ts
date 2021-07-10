@@ -214,12 +214,9 @@
 
         async function displayCards(): Promise<void> {
 
-            let data: FormData = new FormData(document.forms[0]);
             let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/memorygame"; //Button bestaetigen gedrückt 
-            let query: URLSearchParams = new URLSearchParams(<any>data);
-            url = url + "?" + query.toString(); //in String umwandeln 
             let response: Response = await fetch(url);
             let output: CardInterface[] = await response.json();
             console.log(output);

@@ -153,12 +153,9 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     let couples = 0;
     async function displayCards() {
-        let data = new FormData(document.forms[0]);
         let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
         //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
         url += "/memorygame"; //Button bestaetigen gedrückt 
-        let query = new URLSearchParams(data);
-        url = url + "?" + query.toString(); //in String umwandeln 
         let response = await fetch(url);
         let output = await response.json();
         console.log(output);
