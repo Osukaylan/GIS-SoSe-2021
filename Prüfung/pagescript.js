@@ -160,7 +160,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         let output = await response.json();
         console.log(output);
         let cardstoplay = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 8; i++) {
             let whichCard = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
             let firstCard = output[whichCard];
             let secondCard = firstCard;

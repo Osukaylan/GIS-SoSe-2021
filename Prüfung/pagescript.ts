@@ -223,7 +223,7 @@
 
             let cardstoplay: CardInterface[] = [];
 
-            for (let i: number = 0; i < 10; i++) {
+            for (let i: number = 0; i < 8; i++) {
                 let whichCard: number = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
                 let firstCard: CardInterface = output[whichCard];
                 let secondCard: CardInterface = firstCard;
