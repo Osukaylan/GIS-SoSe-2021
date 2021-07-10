@@ -91,7 +91,7 @@
         let serverResponse: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverresponse");
         let time: string = sessionStorage.getItem("duration");
 
-        let scoreTime: HTMLInputElement = <HTMLInputElement>document.getElementById("duration");
+        let scoreTime: HTMLInputElement = <HTMLInputElement>document.getElementById("time");
         scoreTime.value = time; //save the scoretime into the time element
 
 
