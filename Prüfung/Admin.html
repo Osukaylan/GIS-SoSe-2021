@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="Admin">Admin</title>
+    <script src="./pagescript.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar1">
+        <div id="navcontent">
+            <a class="Navigation" href="index.html">landing page</a>
+            <a class="Navigation" href="Game.html">Game</a>
+            <a class="Navigation" href="Highscore.html">Highscore</a>   
+        </div>  
+    </nav>
+
+    <main>
+        <form>
+            <p>add new cards here:</p>
+            <input class="Admin" type="text" name="name" placeholder="Image_Name">
+            <input class="Admin" type="text" name="imageSource" placeholder="Image_Link">
+            <br>
+            <button type="button" id="add" >add</button>
+        </form>
+        <form>
+            <p>remove old cards here:</p>
+            <input class="Admin" type="text" name="name" placeholder="Image_Name">
+            <p></p>
+            <button type="button" id="remove" >remove</button>
+        </form>
+            
+        <p id="memorycards">show all cards that are available in the game</p>
+        <button type="button" id="showallcards">show_all_cards</button>
+        
+        <div id="showImages"></div>
+    </main>
+    
+</body>
+</html>

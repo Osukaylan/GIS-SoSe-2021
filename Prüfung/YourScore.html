@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="YourScore">YourScore</title>
+    <link rel= "stylesheet" href="stylesheet.css">
+    <script src="./pagescript.js" defer> </script>
+</head>
+<body>
+    <header>
+
+    </header>
+        <div id="navcontent">
+            <a class="Navigation" href="index.html">Startseite</a>
+            <a class="Navigation" href="Highscore.html">Highscore</a>
+            <a class="Navigation" href="Admin.html">Admin</a>
+        </div>  
+    </nav>
+    <main>
+        <form>
+            <p>enter your name and see if you made top 10</p>
+            <input class="YourScore" type="text" name="name" placeholder="Name">
+            <input id="time" class="YourScore" type="text" name="time" placeholder="Gametime" readonly>
+
+            <button type="button" id="confirm" >Confirm</button>
+            <p id="serverantwort"></p>
+        </form>
+        
+        <p>All Highscores <a href="Highscore.html"></a></p>
+    </main>
+    
+</body>
+</html>
