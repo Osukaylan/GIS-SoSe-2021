@@ -32,7 +32,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
         url += "/showFeedback" + "?";
         let response = await fetch(url);
         let showresponse = await response.json();
-        ;
         for (let i in showresponse) {
             let query = showresponse[i];
             let divvar = document.createElement("div");

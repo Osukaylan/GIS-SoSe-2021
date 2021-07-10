@@ -1,0 +1,36 @@
+{
+    "cards": [
+        {
+            "name": "Mario",
+            "imageSource": "img/Mario.png"
+        },
+        {
+            "name": "Bowser",
+            "imageSource": "img/Bowser.png"
+        },
+        {
+            "name": "Luigi",
+            "imageSource": "img/Luigi.png"
+        },
+        {
+            "name": "Peach",
+            "imageSource": "img/Peach.png"
+        },
+        {
+            "name": "Goomba",
+            "imageSource": "img/Goomba.png"
+        },
+        {
+            "name": "Toad",
+            "imageSource": "img/Toad.png"
+        },
+        {
+            "name": "Yoshi",
+            "imageSource": "img/Yoshi.png"
+        },
+        {
+            "name": "Kamek",
+            "imageSource": "img/Kamek.png"
+        }
+    ]
+}

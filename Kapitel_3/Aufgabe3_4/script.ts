@@ -33,7 +33,7 @@ import { Feedback } from "./interface";
         console.log("The world..");
         url += "/showFeedback" + "?";
         let response: Response = await fetch(url);
-        let showresponse: Feedback[] = await response.json();;
+        let showresponse: Feedback[] = await response.json();
         for (let i in showresponse) {
             let query: Feedback = showresponse[i];
             let divvar: HTMLDivElement = document.createElement("div");
