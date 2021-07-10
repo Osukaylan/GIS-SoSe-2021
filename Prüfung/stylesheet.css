@@ -5,3 +5,145 @@
     width: 400px;
     
 }
+
+.navigation {
+    position: sticky;
+    top: 10px;
+    padding: 3px;
+    z-index: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end
+}
+#navcontent {
+    flex-direction: row;
+}
+#navcontent1 {
+    text-align: left;
+}
+.Navigation {
+    background-color: rgb(224, 200, 64);
+    padding: 3px;
+    
+}
+
+.Navigation:hover {
+    background-color: rgb(158, 141, 46);
+}
+
+#game {
+    display: flex;
+    justify-content: center;
+}
+
+#game td {
+    background-image: url("img/background.jpg");
+    width: 250px;
+    height: 250px;
+    opacity: 0;
+    border: 3px, solid rgb(138, 185, 170);
+}
+
+#play {
+    background-color: rgb(224, 200, 64);
+    padding: 5px;
+}
+#play:hover {
+    background-color: rgb(158, 141, 46);
+}
+#indexh1{
+    text-align: center;
+}
+
+#navbar{
+    text-align: center;
+    font-size: 35px;
+}
+.Admin {
+    margin-bottom: 10px;
+    
+}
+
+#add {
+    background-color: lightsalmon;
+}
+#add:hover {
+    background-color: rgb(161, 102, 78);
+}
+#remove {
+    background-color: lightsalmon;
+}
+#remove:hover {
+    background-color: rgb(161, 102, 78);
+}
+#showallcards {
+    background-color: lightsalmon;
+}
+#showallcards:hover {
+    background-color: rgb(161, 102, 78);
+}
+#newGame {
+    background-color: lightsalmon;
+}
+#newGame:hover {
+    background-color: rgb(161, 102, 78);
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 5rem;
+    }
+    .navigation {
+        padding: 3px;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+    }
+    .Navigation {
+        padding: 1px;
+        margin: 4px;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+    }
+    #navcontent {
+        flex-direction: row;
+    }
+    #navcontent1 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    body {
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    .navigation {
+        padding: 3px;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+    }
+    .Navigation {
+        font-size: 25px;
+        padding: 1px;
+        margin: 4px;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+    }
+    #navcontent {
+        flex-direction: row;
+    }
+    #navcontent1 {
+        text-align: center;
+    }
+}

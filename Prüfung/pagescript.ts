@@ -141,12 +141,10 @@
         async function displayAllScores(): Promise<void> {
 
             let data: FormData = new FormData(document.forms[0]);
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/scoreDisplay"; //Button bestaetigen gedrückt 
-
-            //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-            //tslint:disable-next-line 
+            //hestablish heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+            //let url: RequestInfo = "http://localhost:8100"; //local testings
+            url += "/scoreDisplay"; 
             let query: URLSearchParams = new URLSearchParams(<any>data);
             url = url + "?" + query.toString();
             let response: Response = await fetch(url);
@@ -186,7 +184,7 @@
                     }
                 }
             }
-            //Quelle: Semester eins in programmieren
+            //Quelle: we learned this in first semester
             return _sortArray;
 
         }
@@ -202,7 +200,8 @@
         }
 
         function newGame(): void {
-            window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
+            //redirection to game.html
+            window.location.href = "Game.html"; 
         }
 
     }
@@ -213,10 +212,10 @@
         let couples: number = 0;
 
         async function displayCards(): Promise<void> {
-
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/memorygame"; //Button bestaetigen gedrückt 
+            //heroku connection
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; 
+            //let url: RequestInfo = "http://localhost:8100"; //local test 
+            url += "/memorygame";
             let response: Response = await fetch(url);
             let output: CardInterface[] = await response.json();
             console.log(output);
@@ -252,7 +251,7 @@
             for (let i: number = 0; i < 16; i++) {
                 let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString());
                 background.style.opacity = "100";
-                background.style.backgroundColor = "#99cc00";
+                background.style.color = "#99cc00";
             }
         }
 
@@ -289,7 +288,7 @@
 
             if (revealedCards.length == 2) {
                 if (revealedCards[0].src == revealedCards[1].src) {
-                    revealedCards = []; //empty array
+                    revealedCards = []; //empty the array
                     couples += 1;
 
                     if (couples == 8) {
@@ -297,11 +296,11 @@
                         let gameend: number = date2.getTime();
                         console.log(gameend);
 
-                        let gametime: number = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide 1k for seconds
+                        let gametime: number = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide with 1k for seconds
                         sessionStorage.setItem("duration", gametime.toString());
                         console.log(gametime);
                         window.location.href = "YourScore.html"; //redirect to score page
-                        //https://www.w3schools.com/js/js_window_location.asp
+                        //Quelle: https://www.w3schools.com/js/js_window_location.asp
                     }
                 }
                 else {
@@ -318,7 +317,7 @@
             for (let i: number = 0; i < revealedCards.length; i++) {
                 revealedCards[i].style.opacity = "0";
             }
-            revealedCards = []; //empty array again
+            revealedCards = []; //empty the array again
         }
         interface CardInterface {
             name: string;

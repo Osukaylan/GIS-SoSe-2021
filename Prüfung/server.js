@@ -31,29 +31,35 @@ var Abgabe;
             let memorycards = { name: url.query.name + "", imageSource: url.query.imageSource + "" };
             let remove = url.query.name + "";
             let score = { name: url.query.name + "", time: (url.query.time + "") };
+            //if heroku url showMeTheCards, await function call
             if (urlpathtostring == "/showMeTheCards") {
                 let show = await MemoryGameDisplay(dblink);
                 _response.write(JSON.stringify(show));
             }
+            //if heroku url addNewCards, await function call
             else if (urlpathtostring == "/addNewCards") {
                 let response = await AddNewCards(dblink, memorycards);
                 console.log(response);
                 _response.write(response);
             }
+            //if heroku url removeCards, await function call
             else if (urlpathtostring == "/removeCards") {
                 let response = await RemoveCards(dblink, remove);
                 console.log(response);
                 _response.write(response);
             }
+            //if heroku url memorygame, await function call
             else if (urlpathtostring == "/memorygame") {
                 let cards = await MemoryGameDisplay(dblink);
                 _response.write(JSON.stringify(cards));
             }
+            //if heroku url saveRun, await function call
             else if (urlpathtostring == "/saveRun") {
                 let response = await SaveCurrentRun(dblink, score);
                 console.log(response);
                 _response.write(response);
             }
+            //if heroku url scoreDisplay, await function call
             else if (urlpathtostring == "/scoreDisplay") {
                 let scores = await DisplayScore(dblink);
                 _response.write(JSON.stringify(scores));
@@ -65,7 +71,8 @@ var Abgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let images = mongoClient.db("MemoryGame").collection("CardData"); //Collection aufrufen
+        //call collection   
+        let images = mongoClient.db("MemoryGame").collection("CardData");
         let cursor = images.find();
         console.log(cursor);
         //return found datas of cards
@@ -77,7 +84,8 @@ var Abgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let images = mongoClient.db("MemoryGame").collection("CardData"); //Collection aufrufen
+        //call collection
+        let images = mongoClient.db("MemoryGame").collection("CardData");
         //add memory card
         images.insertOne(_card);
         return "added";
@@ -86,7 +94,8 @@ var Abgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let images = mongoClient.db("MemoryGame").collection("CardData"); //Collection aufrufen
+        //call collection
+        let images = mongoClient.db("MemoryGame").collection("CardData");
         //delete memory card with this name
         images.deleteOne({ name: _name });
         return "removed";
@@ -95,7 +104,8 @@ var Abgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let player = mongoClient.db("MemoryGame").collection("PlayerData"); //Collection aufrufen
+        //call collection
+        let player = mongoClient.db("MemoryGame").collection("PlayerData");
         //save the score of the current game into DB
         player.insertOne(_score);
         let scoreresponse = "Your score has been added!";
@@ -105,7 +115,8 @@ var Abgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let player = mongoClient.db("MemoryGame").collection("PlayerData"); //Collection aufrufen
+        //call collection
+        let player = mongoClient.db("MemoryGame").collection("PlayerData");
         //find the data of player
         let cursor = player.find();
         //Await found data from DB

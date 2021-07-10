@@ -96,11 +96,10 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
     async function displayAllScores() {
         let data = new FormData(document.forms[0]);
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/scoreDisplay"; //Button bestaetigen gedrückt 
-        //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
-        //tslint:disable-next-line 
+        //hestablish heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100"; //local testings
+        url += "/scoreDisplay";
         let query = new URLSearchParams(data);
         url = url + "?" + query.toString();
         let response = await fetch(url);
@@ -134,7 +133,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
                 }
             }
         }
-        //Quelle: Semester eins in programmieren
+        //Quelle: we learned this in first semester
         return _sortArray;
     }
     function empty() {
@@ -146,16 +145,18 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         }
     }
     function newGame() {
-        window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
+        //redirection to game.html
+        window.location.href = "Game.html";
     }
 }
 // on the game page
 if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     let couples = 0;
     async function displayCards() {
-        let url = "https://kapitel3gissose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/memorygame"; //Button bestaetigen gedrückt 
+        //heroku connection
+        let url = "https://kapitel3gissose2021.herokuapp.com";
+        //let url: RequestInfo = "http://localhost:8100"; //local test 
+        url += "/memorygame";
         let response = await fetch(url);
         let output = await response.json();
         console.log(output);
@@ -184,7 +185,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         for (let i = 0; i < 16; i++) {
             let background = document.getElementById(i.toString());
             background.style.opacity = "100";
-            background.style.backgroundColor = "#99cc00";
+            background.style.color = "#99cc00";
         }
     }
     function position(_cardstoplay) {
@@ -211,17 +212,17 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         revealed.style.opacity = "100"; //show card
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
-                revealedCards = []; //empty array
+                revealedCards = []; //empty the array
                 couples += 1;
                 if (couples == 8) {
                     let date2 = new Date();
                     let gameend = date2.getTime();
                     console.log(gameend);
-                    let gametime = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide 1k for seconds
+                    let gametime = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide with 1k for seconds
                     sessionStorage.setItem("duration", gametime.toString());
                     console.log(gametime);
                     window.location.href = "YourScore.html"; //redirect to score page
-                    //https://www.w3schools.com/js/js_window_location.asp
+                    //Quelle: https://www.w3schools.com/js/js_window_location.asp
                 }
             }
             else {
@@ -237,7 +238,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         for (let i = 0; i < revealedCards.length; i++) {
             revealedCards[i].style.opacity = "0";
         }
-        revealedCards = []; //empty array again
+        revealedCards = []; //empty the array again
     }
 }
 //# sourceMappingURL=pagescript.js.map
