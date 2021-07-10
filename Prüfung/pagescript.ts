@@ -250,7 +250,7 @@
 
         function showBackground(): void {
             for (let i: number = 0; i < 16; i++) {
-                let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "");
+                let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString());
                 background.style.opacity = "100";
             }
         }
@@ -262,7 +262,7 @@
 
             for (let i: number = 0; i < 16; i++) {
                 let card: HTMLImageElement = cardImage(_cardstoplay[i]);
-                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + ""); // Yup, Tablecell is got with random position
+                let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString()); // Yup, Tablecell is got with random position
                 place.appendChild(card);
             }
         }

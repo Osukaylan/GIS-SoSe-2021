@@ -182,7 +182,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     playButton.addEventListener("click", displayCards);
     function showBackground() {
         for (let i = 0; i < 16; i++) {
-            let background = document.getElementById(i + "");
+            let background = document.getElementById(i.toString());
             background.style.opacity = "100";
         }
     }
@@ -191,7 +191,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
         for (let i = 0; i < 16; i++) {
             let card = cardImage(_cardstoplay[i]);
-            let place = document.getElementById(i + ""); // Yup, Tablecell is got with random position
+            let place = document.getElementById(i.toString()); // Yup, Tablecell is got with random position
             place.appendChild(card);
         }
     }
