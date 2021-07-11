@@ -1,8 +1,8 @@
 
-
+let baseurl: string = "https://kapitel3gissose2021.herokuapp.com";
 //we are on admin.html
 
-if ((document.querySelector("title").getAttribute("id") == "Admin")) {
+if ((document.body.id == "Admin")) {
 
     interface CardInterface {
         name: string;
@@ -11,9 +11,8 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
     //display all cards with name and image once, that are in the game and can potentially occur in the game(example: more then 8 cards are in the database)
     async function showImages(): Promise<void> {
         //establish heroku connection
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+        let url: RequestInfo = baseurl + "/showMeTheCards";
         //let url: RequestInfo = "http://localhost:8100"; //local testing
-        url += "/showMeTheCards";
         let response: Response = await fetch(url);
         let output: CardInterface[] = await response.json(); //wait for response of all cards then load
         console.log(output);
@@ -47,12 +46,10 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
     //add a new card with given Name and link to db
     async function AddCard(): Promise<void> {
         let data: FormData = new FormData(document.forms[0]);
-        //establish heroku connection
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
-        //let url: RequestInfo = "http://localhost:8100";  //local testing
-        url += "/addNewCards";
         let query: URLSearchParams = new URLSearchParams(<any>data);
-        url = url + "?" + query.toString();
+        //establish heroku connection
+        let url: RequestInfo = baseurl + "/addNewCards" + "?" + query.toString();
+        //let url: RequestInfo = "http://localhost:8100";  //local testing
         let response: Response = await fetch(url);
         let output: string = await response.text();
         console.log(output);
@@ -65,13 +62,11 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
     buttonAdd.addEventListener("click", AddCard);
     //function: removes the card with the name you have put in from the database and reload page
     async function removeCard(): Promise<void> {
-        let daten: FormData = new FormData(document.forms[1]);
+        let data: FormData = new FormData(document.forms[1]);
+        let query: URLSearchParams = new URLSearchParams(<any>data);
         //establish heroku connection
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com" + "/removeCards" + "?" + query.toString();
         //let url: RequestInfo = "http://localhost:8100"; //for local testings 
-        url += "/removeCards";
-        let query: URLSearchParams = new URLSearchParams(<any>daten);
-        url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let output: string = await response.text();
         console.log(output);
@@ -86,7 +81,7 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
 }
 
 //YourScpre page
-else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
+else if ((document.body.id == "YourScore")) {
 
     let serverResponse: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverresponse");
     //sets time variable to the duration that we calculated
@@ -98,13 +93,11 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
     //name and score(time) are input into database, data is being fetched from heroku url with /saveRun at end, then redirect to highscore page.   
     async function dataInput(): Promise<void> { 
         let data: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>data);
         //establish heroku connection
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com" +  "/saveRun" + "?" + query.toString();
         //let url: RequestInfo = "http://localhost:8100"; //local test
         url += "/saveRun"; // 
-
-        let query: URLSearchParams = new URLSearchParams(<any>data);
-        url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let output: string = await response.text();
         serverResponse.innerHTML = output;
@@ -125,7 +118,7 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 }
 
 //Highscore Page
-if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
+if ((document.body.id == "Highscore")) {
 
     //load all scores once page loads
     displayAllScores();
@@ -137,9 +130,8 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
     //displays the scores by sorted array and calls empty function. keeps only the 10 fastest scores
     async function displayAllScores(): Promise<void> {
 
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com" + "/scoreDisplay";
         //let url: RequestInfo = "http://localhost:8100"; //local testings
-        url += "/scoreDisplay";
         let response: Response = await fetch(url);
         let output: Scores[] = await response.json();
 
@@ -210,16 +202,15 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 }
 
 // on the game page
-if ((document.querySelector("title").getAttribute("id") == "Memory")) {
+if ((document.body.id == "Memory")) {
 
     let couples: number = 0;
     let _cardsAmount: number = 0;
     //display all card in array (up to 8 couples) once play button has been clicked.
     async function displayCards(): Promise<void> {
         //heroku connection
-        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+        let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com" + "/showMeTheCards";
         //let url: RequestInfo = "http://localhost:8100"; //local test 
-        url += "/showMeTheCards";
         let response: Response = await fetch(url);
         let output: CardInterface[] = await response.json();
         console.log(output);
