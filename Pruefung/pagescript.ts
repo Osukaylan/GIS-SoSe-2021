@@ -96,7 +96,7 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
     scoreTime.value = time; //save the scoretime into the time element
 
     //name and score(time) are input into database, data is being fetched from heroku url with /saveRun at end, then redirect to highscore page.   
-    async function dataInput(): Promise<void> {
+    async function dataInput(): Promise<void> { 
         let data: FormData = new FormData(document.forms[0]);
         //establish heroku connection
         let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
@@ -302,13 +302,8 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         //if the two picked cards are revealed and match, add 1 to the couples count
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
-                setTimeout(() => {
-                    revealedCards[0].remove();
-                    revealedCards[1].remove();
-                    revealedCards = []; //empty the array
-                    couples += 1;
-                },         800);
-
+                revealedCards = []; //empty the array
+                couples += 1;
                 //if all couples of the given card amount have been found, end the game and get the time of when game ended - when it started
                 if (couples == _cardsAmount) {
                     let date2: Date = new Date();
@@ -331,7 +326,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
             unReveal();
         }
     }
-    //if the picked cards do not match, set opacity to 0
+        //if the picked cards do not match, set opacity to 0
     function unReveal(): void {
         for (let i: number = 0; i < revealedCards.length; i++) {
             revealedCards[i].style.opacity = "0";
