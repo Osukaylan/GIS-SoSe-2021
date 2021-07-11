@@ -91,13 +91,9 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 //Highscore Page
 if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
     async function displayAllScores() {
-        let data = new FormData(document.forms[0]);
-        //hestablish heroku connection
-        let url = "https://kapitel3gissose2021.herokuapp.com";
+        let url = "https://kapitel3gissose2021.herokuapp.com/scoreDisplay";
         //let url: RequestInfo = "http://localhost:8100"; //local testings
         url += "/scoreDisplay";
-        let query = new URLSearchParams(data);
-        url = url + "?" + query.toString();
         let response = await fetch(url);
         let output = await response.json();
         let sortedScores = output;

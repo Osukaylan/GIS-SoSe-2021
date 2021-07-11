@@ -133,13 +133,9 @@
 
         async function displayAllScores(): Promise<void> {
 
-            let data: FormData = new FormData(document.forms[0]);
-            //hestablish heroku connection
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com/scoreDisplay";
             //let url: RequestInfo = "http://localhost:8100"; //local testings
             url += "/scoreDisplay"; 
-            let query: URLSearchParams = new URLSearchParams(<any>data);
-            url = url + "?" + query.toString();
             let response: Response = await fetch(url);
             let output: Scores[] = await response.json();
 
