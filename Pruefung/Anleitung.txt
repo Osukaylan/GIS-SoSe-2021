@@ -1,5 +1,5 @@
 -	"scripts": {
-    	"start": "node Prüfung/server.js"
+    	"start": "node Pruefung/server.js"
   	}, 
 	muss ausgeführt werden.
 -	zum ausführen entweder eigene heroku url nehmen, sowie mongodb(muss man 		dann aber selber mit images füllen) oder meine mongodb und heroku lassen.
