@@ -299,10 +299,11 @@
 
             if (revealedCards.length == 2) {
                 if (revealedCards[0].src == revealedCards[1].src) {
-                    revealed.style.opacity = "0";
                     revealedCards = []; //empty the array
                     couples += 1;
-
+                    for (let i: number = 0; i < revealedCards.length; i++) {
+                    revealedCards[i].style.opacity = "0";
+                    }
                     if (couples == _cardsAmount) {
                         let date2: Date = new Date();
                         let gameend: number = date2.getTime();

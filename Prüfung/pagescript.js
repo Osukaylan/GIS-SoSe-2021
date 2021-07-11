@@ -223,9 +223,11 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         revealed.style.opacity = "100"; //show card
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
-                revealed.style.opacity = "0";
                 revealedCards = []; //empty the array
                 couples += 1;
+                for (let i = 0; i < revealedCards.length; i++) {
+                    revealedCards[i].style.opacity = "0";
+                }
                 if (couples == _cardsAmount) {
                     let date2 = new Date();
                     let gameend = date2.getTime();
