@@ -170,7 +170,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         //heroku connection
         let url = "https://kapitel3gissose2021.herokuapp.com";
         //let url: RequestInfo = "http://localhost:8100"; //local test 
-        url += "/memorygame";
+        url += "/showMeTheCards";
         let response = await fetch(url);
         let output = await response.json();
         console.log(output);
