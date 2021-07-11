@@ -144,7 +144,16 @@
             sort(sortedScores);
             empty();
 
-            for (let i: number = 0; i < 10; i++) {
+            let goTo: number = 0;
+
+            if (sortedScores.length < 10) {
+                goTo = sortedScores.length;
+            }
+            else {
+                goTo = 10;
+            }
+
+            for (let i: number = 0; i < goTo; i++) {
                 let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("e" + i.toString());
                 let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("r" + i.toString());
                 let name: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");

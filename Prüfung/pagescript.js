@@ -99,7 +99,14 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         let sortedScores = output;
         sort(sortedScores);
         empty();
-        for (let i = 0; i < 10; i++) {
+        let goTo = 0;
+        if (sortedScores.length < 10) {
+            goTo = sortedScores.length;
+        }
+        else {
+            goTo = 10;
+        }
+        for (let i = 0; i < goTo; i++) {
             let rowName = document.getElementById("e" + i.toString());
             let rowTime = document.getElementById("r" + i.toString());
             let name = document.createElement("span");
