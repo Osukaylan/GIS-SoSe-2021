@@ -152,6 +152,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 // on the game page
 if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     let couples = 0;
+    let _cardsAmount = 0;
     async function displayCards() {
         //heroku connection
         let url = "https://kapitel3gissose2021.herokuapp.com";
@@ -161,7 +162,13 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         let output = await response.json();
         console.log(output);
         let cardstoplay = [];
-        for (let i = 0; i < 8; i++) {
+        if (output.length < 8) {
+            _cardsAmount = output.length;
+        }
+        else {
+            _cardsAmount = 8;
+        }
+        for (let i = 0; i < _cardsAmount; i++) {
             let whichCard = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
             let firstCard = output[whichCard];
             let secondCard = firstCard;
@@ -182,7 +189,8 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     let playButton = document.getElementById("play");
     playButton.addEventListener("click", displayCards);
     function showBackground() {
-        for (let i = 0; i < 16; i++) {
+        let amountAllowed = _cardsAmount * 2;
+        for (let i = 0; i < amountAllowed; i++) {
             let background = document.getElementById(i.toString());
             background.style.opacity = "100";
             background.style.color = "#99cc00";
@@ -191,7 +199,8 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     function position(_cardstoplay) {
         //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
         _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
-        for (let i = 0; i < 16; i++) {
+        let amountAllowed = _cardsAmount * 2;
+        for (let i = 0; i < amountAllowed; i++) {
             let card = cardImage(_cardstoplay[i]);
             let place = document.getElementById(i.toString()); // Yup, Tablecell is got with random position
             place.appendChild(card);
@@ -216,7 +225,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
             if (revealedCards[0].src == revealedCards[1].src) {
                 revealedCards = []; //empty the array
                 couples += 1;
-                if (couples == 8) {
+                if (couples == _cardsAmount) {
                     let date2 = new Date();
                     let gameend = date2.getTime();
                     console.log(gameend);

@@ -211,7 +211,7 @@
     if ((document.querySelector("title").getAttribute("id") == "Memory")) {
 
         let couples: number = 0;
-
+        let _cardsAmount: number = 0;
         async function displayCards(): Promise<void> {
             //heroku connection
             let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com"; 
@@ -223,7 +223,14 @@
 
             let cardstoplay: CardInterface[] = [];
 
-            for (let i: number = 0; i < 8; i++) {
+            if (output.length < 8) {
+                _cardsAmount = output.length;
+            }
+            else {
+                _cardsAmount = 8;
+            }
+
+            for (let i: number = 0; i < _cardsAmount; i++) {
                 let whichCard: number = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
                 let firstCard: CardInterface = output[whichCard];
                 let secondCard: CardInterface = firstCard;
@@ -249,7 +256,8 @@
         playButton.addEventListener("click", displayCards);
 
         function showBackground(): void {
-            for (let i: number = 0; i < 16; i++) {
+            let amountAllowed: number = _cardsAmount * 2;
+            for (let i: number = 0; i < amountAllowed; i++) {
                 let background: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString());
                 background.style.opacity = "100";
                 background.style.color = "#99cc00";
@@ -261,7 +269,8 @@
             //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
             _cardstoplay.sort(() => .5 - Math.random()); //randomly sorts the Array
 
-            for (let i: number = 0; i < 16; i++) {
+            let amountAllowed: number = _cardsAmount * 2;
+            for (let i: number = 0; i < amountAllowed; i++) {
                 let card: HTMLImageElement = cardImage(_cardstoplay[i]);
                 let place: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i.toString()); // Yup, Tablecell is got with random position
                 place.appendChild(card);
@@ -293,7 +302,7 @@
                     revealedCards = []; //empty the array
                     couples += 1;
 
-                    if (couples == 8) {
+                    if (couples == _cardsAmount) {
                         let date2: Date = new Date();
                         let gameend: number = date2.getTime();
                         console.log(gameend);
