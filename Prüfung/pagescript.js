@@ -225,9 +225,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
             if (revealedCards[0].src == revealedCards[1].src) {
                 revealedCards = []; //empty the array
                 couples += 1;
-                for (let i = 0; i < revealedCards.length; i++) {
-                    revealedCards[i].style.opacity = "0";
-                }
+                hideCard();
                 if (couples == _cardsAmount) {
                     let date2 = new Date();
                     let gameend = date2.getTime();
@@ -246,6 +244,11 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         }
         else if (revealedCards.length > 2) {
             unReveal();
+        }
+    }
+    function hideCard() {
+        for (let i = 0; i < revealedCards.length; i++) {
+            revealedCards[i].style.opacity = "0";
         }
     }
     function unReveal() {
