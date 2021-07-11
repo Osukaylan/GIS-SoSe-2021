@@ -235,7 +235,6 @@ if ((document.body.id == "Memory")) {
         //if the two picked cards are revealed and match, add 1 to the couples count
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
-                setTimeout(removeCards, 500);
                 revealedCards = []; //empty the array
                 couples += 1;
                 //if all couples of the given card amount have been found, end the game and get the time of when game ended - when it started
@@ -258,13 +257,6 @@ if ((document.body.id == "Memory")) {
         else if (revealedCards.length > 2) {
             unReveal();
         }
-    }
-    function removeCards() {
-        for (let i = 0; i < revealedCards.length; i++) {
-            revealedCards[i].style.opacity = "0";
-        }
-        revealedCards[0].remove();
-        revealedCards[1].remove();
     }
     //if the picked cards do not match, set opacity to 0
     function unReveal() {
