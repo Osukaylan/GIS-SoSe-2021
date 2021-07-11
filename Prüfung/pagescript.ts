@@ -276,7 +276,8 @@
             image.src = _choice.imageSource;
             image.addEventListener("click", revealCard);
             image.style.opacity = "0"; //because card is still hidden
-
+            image.style.width = "300px";
+            image.style.height = "300px";
             return image;
         }
 
