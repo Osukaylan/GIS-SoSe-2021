@@ -8,4 +8,5 @@
 -	man kann es mit live server ausführen, aber bilder werden dann nicht
 	geladen.
 
-GitHub.io link: https://osukaylan.github.io/GIS-SoSe-2021/Prüfung/index.html
+GitHub.io link: https://osukaylan.github.io/GIS-SoSe-2021/Pruefung/index.html
+
