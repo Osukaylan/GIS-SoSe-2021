@@ -8,7 +8,7 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
         name: string;
         imageSource: string;
     }
-
+    //display all cards with name and image once, that are in the game and can potentially occur in the game(example: more then 8 cards are in the database)
     async function showImages(): Promise<void> {
         //establish heroku connection
         let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
@@ -44,7 +44,7 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
         return cardo;
     }
 
-
+    //add a new card with given Name and link to db
     async function AddCard(): Promise<void> {
         let data: FormData = new FormData(document.forms[0]);
         //establish heroku connection
@@ -61,9 +61,9 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
 
     }
 
-    let buttonHinzu: HTMLButtonElement = <HTMLButtonElement>document.getElementById("add");
-    buttonHinzu.addEventListener("click", AddCard);
-
+    let buttonAdd: HTMLButtonElement = <HTMLButtonElement>document.getElementById("add");
+    buttonAdd.addEventListener("click", AddCard);
+    //function: removes the card with the name you have put in from the database and reload page
     async function removeCard(): Promise<void> {
         let daten: FormData = new FormData(document.forms[1]);
         //establish heroku connection
@@ -89,13 +89,14 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
 else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 
     let serverResponse: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverresponse");
+    //sets time variable to the duration that we calculated
     let time: string = sessionStorage.getItem("duration");
-
+    //get element with id "time" and set the text inside to the duration we saved in variable "time"
     let scoreTime: HTMLInputElement = <HTMLInputElement>document.getElementById("time");
     scoreTime.value = time; //save the scoretime into the time element
 
-
-    async function dataInput(): Promise<void> { //name and score are input into database
+    //name and score(time) are input into database, data is being fetched from heroku url with /saveRun at end, then redirect to highscore page.   
+    async function dataInput(): Promise<void> { 
         let data: FormData = new FormData(document.forms[0]);
         //establish heroku connection
         let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
@@ -126,14 +127,14 @@ else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
 //Highscore Page
 if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 
-
+    //load all scores once page loads
     displayAllScores();
 
     interface Scores {
         name: string;
         time: string;
     }
-
+    //displays the scores by sorted array and calls empty function. keeps only the 10 fastest scores
     async function displayAllScores(): Promise<void> {
 
         let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
@@ -148,14 +149,14 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         empty();
 
         let goTo: number = 0;
-
+        //if the array length of sortedScores is less then 10, set goTo to the current length of it
         if (sortedScores.length < 10) {
             goTo = sortedScores.length;
         }
         else {
             goTo = 10;
         }
-
+        //run loop until it eaches either 10, or the current number of scores
         for (let i: number = 0; i < goTo; i++) {
             let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("e" + i.toString());
             let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("r" + i.toString());
@@ -173,7 +174,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
     scoreButton.addEventListener("click", displayAllScores);
     let newGamebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("newGame");
     newGamebutton.addEventListener("click", newGame);
-
+    //sort the scores in the array by lowest time when finished the game
     function sort(_sortArray: Scores[]): Scores[] {
         let savethissomewhere: Scores;
         for (let j: number = 1; j < _sortArray.length; j++) {
@@ -189,6 +190,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         return _sortArray;
 
     }
+    //empties name and time from score list, so it doesnt keep adding it next to each other when pressing refresh button
     function empty(): void {
         for (let i: number = 0; i < 10; i++) {
             let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("e" + i);
@@ -212,6 +214,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
 
     let couples: number = 0;
     let _cardsAmount: number = 0;
+    //display all card in array (up to 8 couples) once play button has been clicked.
     async function displayCards(): Promise<void> {
         //heroku connection
         let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
@@ -222,14 +225,14 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         console.log(output);
 
         let cardstoplay: CardInterface[] = [];
-
+        //if the json has less then 8 cards, set output.length to new card amount, otherwise set it to 8 cards
         if (output.length < 8) {
             _cardsAmount = output.length;
         }
         else {
             _cardsAmount = 8;
         }
-
+        // for each card run for loop, even if less then 8 cards, the code will run. create doublets of each card
         for (let i: number = 0; i < _cardsAmount; i++) {
             let whichCard: number = Math.floor((Math.random() * ((output.length - 1) - 0 + 1)) + 0); //generate a random number inside scope of array length
             let firstCard: CardInterface = output[whichCard];
@@ -245,7 +248,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         showBackground();
         position(cardstoplay);
 
-        //measure time since start
+        //measure time since start and save it into session
         let date: Date = new Date();
         let timeSinceStart: number = date.getTime();
         sessionStorage.setItem("start", timeSinceStart.toString());
@@ -254,7 +257,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
 
     let playButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("play");
     playButton.addEventListener("click", displayCards);
-
+    //show the background for every the amount of given cards. if there is less then 8 couples, no extra background will be placed
     function showBackground(): void {
         let amountAllowed: number = _cardsAmount * 2;
         for (let i: number = 0; i < amountAllowed; i++) {
@@ -263,7 +266,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
             background.style.color = "#99cc00";
         }
     }
-
+    //randomize the position of all 'playable' cards on the website
     function position(_cardstoplay: CardInterface[]): void {
 
         //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -277,7 +280,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         }
     }
 
-
+    //displays the image of each card, and sets its size to a fixxed value (the background image is only 300x300)
     function cardImage(_choice: CardInterface): HTMLImageElement {
 
         let image: HTMLImageElement = document.createElement("img");
@@ -291,18 +294,17 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
     }
 
     let revealedCards: HTMLImageElement[] = []; //save revealed cards so you can compare
-
+    //gets called when a card(target) is clicked
     function revealCard(_e: Event): void {
         let revealed: HTMLImageElement = <HTMLImageElement>_e.target;
         revealedCards.push(revealed);
         revealed.style.opacity = "100"; //show card
-
+        //if the two picked cards are revealed and match, add 1 to the couples count
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
                 revealedCards = []; //empty the array
                 couples += 1;
-                hideCard();
-
+                //if all couples of the given card amount have been found, end the game and get the time of when game ended - when it started
                 if (couples == _cardsAmount) {
                     let date2: Date = new Date();
                     let gameend: number = date2.getTime();
@@ -324,12 +326,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
             unReveal();
         }
     }
-    function hideCard(): void {
-        for (let i: number = 0; i < revealedCards.length; i++) {
-            revealedCards[i].style.opacity = "0";
-        }
-    }
-
+        //if the picked cards do not match, set opacity to 0
     function unReveal(): void {
         for (let i: number = 0; i < revealedCards.length; i++) {
             revealedCards[i].style.opacity = "0";

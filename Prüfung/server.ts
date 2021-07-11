@@ -3,7 +3,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace Abgabe {
-
+    
     let dblink: string = "mongodb+srv://hfuadmindb:Umjr5zNUfMHxpGzn@cluster0.hppec.mongodb.net/MemoryGame?retryWrites=true&w=majority";
 
     let port: number = Number(process.env.PORT);
@@ -23,7 +23,8 @@ export namespace Abgabe {
     //function handleListen(): void {     // do we still need to comment all of this?
     //    console.log("Listening");
     //}
-
+    //function: is getting fires when the server starts, console log to see it is running, if url that is requesting from heroku is present
+    //let variable memorycards be able to be filled with name and imageSource, same applies to score variable.
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!");
 
@@ -55,10 +56,10 @@ export namespace Abgabe {
                 _response.write(response);
             }
             //if heroku url memorygame, await function call
-            else if (urlpathtostring == "/memorygame") {
+            /*else if (urlpathtostring == "/memorygame") {
                 let cards: CardInterface[] = await MemoryGameDisplay(dblink);
                 _response.write(JSON.stringify(cards));
-            }
+            }*/
             //if heroku url saveRun, await function call
             else if (urlpathtostring == "/saveRun") {
                 let response: string = await SaveCurrentRun(dblink, score);
@@ -73,7 +74,8 @@ export namespace Abgabe {
         }
         _response.end();
     }
-
+    //async function = can run while other functions are being loaded. connects to mongodb and finds the images in collection inside db,
+    //takes the data(id, name, imageSource) and adds them to the array, then returns it to heroku url ending with /showMeTheCards
     async function MemoryGameDisplay(_url: string): Promise<CardInterface[]> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -89,7 +91,7 @@ export namespace Abgabe {
         console.log(cardsweplaywith);
         return cardsweplaywith;
     }
-
+    //async function = can run while other functions are being loaded. connects to mongodb and inserts the image with name and imageSource you have set,
     async function AddNewCards(_url: string, _card: CardInterface): Promise<string> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -101,7 +103,8 @@ export namespace Abgabe {
         images.insertOne(_card);
         return "added";
     }
-
+    //async function = can run while other functions are being loaded. connects to mongodb and DELETES the image with name you have set,
+    //in collection inside db, then returns "removed" to heroku url ending with /removeCards
     async function RemoveCards(_url: string, _name: string | string[]): Promise<string> {
 
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -112,7 +115,9 @@ export namespace Abgabe {
         //delete memory card with this name
         images.deleteOne({ name: _name });
         return "removed";
-    }
+    }    
+    //async function = can run while other functions are being loaded. connects to mongodb and inserts score of player with name you ahve set and gametime,
+    //in collection inside db, then returns "Your score has been added!" to heroku url ending with /saveRun
     async function SaveCurrentRun(_url: string, _score: Scores): Promise<string> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -126,6 +131,8 @@ export namespace Abgabe {
         let scoreresponse: string = "Your score has been added!";
         return scoreresponse;
     }
+    //async function = can run while other functions are being loaded. connects to mongodb and finds data of all player scores(name and time),
+    //in collection inside db, then returns all of these score values to heroku url ending with /scoreDisplay
     async function DisplayScore(_url: string): Promise<Scores[]> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
