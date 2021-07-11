@@ -126,6 +126,9 @@
     //Highscore Page
     if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
 
+
+        displayAllScores();
+
         interface Scores {
             name: string;
             time: string;
