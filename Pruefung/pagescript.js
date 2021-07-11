@@ -76,7 +76,6 @@ else if ((document.body.id == "YourScore")) {
         //establish heroku connection
         let url = "https://kapitel3gissose2021.herokuapp.com" + "/saveRun" + "?" + query.toString();
         //let url: RequestInfo = "http://localhost:8100"; //local test
-        url += "/saveRun"; // 
         let response = await fetch(url);
         let output = await response.text();
         serverResponse.innerHTML = output;
