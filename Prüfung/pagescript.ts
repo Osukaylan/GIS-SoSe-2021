@@ -306,7 +306,7 @@
                         let date2: Date = new Date();
                         let gameend: number = date2.getTime();
                         console.log(gameend);
-
+            
                         let gametime: number = (gameend - parseInt(sessionStorage.getItem("start"))) / 1000; //divide with 1k for seconds
                         sessionStorage.setItem("duration", gametime.toString());
                         console.log(gametime);

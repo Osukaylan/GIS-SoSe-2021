@@ -90,10 +90,14 @@ var Abgabe;
         images.insertOne(_card);
         return "added";
     }
-    async function RemoveCards(_url, _name) {
+    function ConnectMongoDb(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
-        await mongoClient.connect();
+        mongoClient.connect();
+        return mongoClient;
+    }
+    async function RemoveCards(_url, _name) {
+        let mongoClient = ConnectMongoDb(_url);
         //call collection
         let images = mongoClient.db("MemoryGame").collection("CardData");
         //delete memory card with this name

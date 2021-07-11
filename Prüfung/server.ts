@@ -102,11 +102,16 @@ export namespace Abgabe {
         return "added";
     }
 
-    async function RemoveCards(_url: string, _name: string | string[]): Promise<string> {
+    function ConnectMongoDb(_url: string): Mongo.MongoClient {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-        await mongoClient.connect();
+        mongoClient.connect();
+        return mongoClient;
+    }
+
+    async function RemoveCards(_url: string, _name: string | string[]): Promise<string> {
+
+        let mongoClient: Mongo.MongoClient = ConnectMongoDb(_url);
         //call collection
         let images: Mongo.Collection = mongoClient.db("MemoryGame").collection("CardData");
         //delete memory card with this name
