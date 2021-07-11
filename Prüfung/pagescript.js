@@ -66,7 +66,7 @@ if ((document.querySelector("title").getAttribute("id") == "Admin")) {
 else if ((document.querySelector("title").getAttribute("id") == "YourScore")) {
     let serverResponse = document.getElementById("serverresponse");
     let time = sessionStorage.getItem("duration");
-    let scoreTime = document.getElementById("gametime");
+    let scoreTime = document.getElementById("time");
     scoreTime.value = time; //save the scoretime into the time element
     async function dataInput() {
         let data = new FormData(document.forms[0]);
