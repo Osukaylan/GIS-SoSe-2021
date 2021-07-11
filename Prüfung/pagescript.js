@@ -100,13 +100,13 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         sort(sortedScores);
         empty();
         for (let i = 0; i < 10; i++) {
-            let rowName = document.getElementById(i + "e");
-            let rowTime = document.createElement(i + "r");
+            let rowName = document.getElementById("e" + i.toString());
+            let rowTime = document.createElement("r" + i.toString());
             let name = document.createElement("span");
             name.innerText = sortedScores[i].name + ": ";
             rowName.appendChild(name);
             let time = document.createElement("span");
-            time.innerText = sortedScores[i].time + " s";
+            time.innerText = sortedScores[i].time.toString() + " s";
             rowTime.appendChild(time);
         }
     }

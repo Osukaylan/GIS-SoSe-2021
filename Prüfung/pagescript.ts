@@ -132,7 +132,7 @@
         }
 
         async function displayAllScores(): Promise<void> {
-
+            
             let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
             //let url: RequestInfo = "http://localhost:8100"; //local testings
             url += "/scoreDisplay"; 
@@ -145,14 +145,14 @@
             empty();
 
             for (let i: number = 0; i < 10; i++) {
-                let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById(i + "e");
-                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.createElement(i + "r");
+                let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("e" + i.toString());
+                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.createElement("r" + i.toString());
                 let name: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
                 name.innerText = sortedScores[i].name + ": ";
                 rowName.appendChild(name);
 
                 let time: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
-                time.innerText = sortedScores[i].time + " s";
+                time.innerText = sortedScores[i].time.toString() + " s";
                 rowTime.appendChild(time);
             }
         }
