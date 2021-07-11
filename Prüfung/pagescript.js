@@ -101,7 +101,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
         empty();
         for (let i = 0; i < 10; i++) {
             let rowName = document.getElementById("e" + i.toString());
-            let rowTime = document.createElement("r" + i.toString());
+            let rowTime = document.getElementById("r" + i.toString());
             let name = document.createElement("span");
             name.innerText = sortedScores[i].name + ": ";
             rowName.appendChild(name);

@@ -146,7 +146,7 @@
 
             for (let i: number = 0; i < 10; i++) {
                 let rowName: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("e" + i.toString());
-                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.createElement("r" + i.toString());
+                let rowTime: HTMLTableDataCellElement = <HTMLTableDataCellElement>document.getElementById("r" + i.toString());
                 let name: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
                 name.innerText = sortedScores[i].name + ": ";
                 rowName.appendChild(name);
