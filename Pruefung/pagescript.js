@@ -260,11 +260,11 @@ if ((document.body.id == "Memory")) {
         }
     }
     function removeCards() {
-        revealedCards[0].remove();
-        revealedCards[1].remove();
         for (let i = 0; i < revealedCards.length; i++) {
             revealedCards[i].style.opacity = "0";
         }
+        revealedCards[0].remove();
+        revealedCards[1].remove();
     }
     //if the picked cards do not match, set opacity to 0
     function unReveal() {
