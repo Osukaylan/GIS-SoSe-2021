@@ -243,6 +243,8 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         //if the two picked cards are revealed and match, add 1 to the couples count
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
+                revealedCards[0].remove();
+                revealedCards[1].remove();
                 revealedCards = []; //empty the array
                 couples += 1;
                 //if all couples of the given card amount have been found, end the game and get the time of when game ended - when it started
