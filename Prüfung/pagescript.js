@@ -114,7 +114,7 @@ if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
             name.innerText = sortedScores[i].name + ": ";
             rowName.appendChild(name);
             let time = document.createElement("span");
-            time.innerText = sortedScores[i].time.toString() + " s";
+            time.innerText = sortedScores[i].time.toString() + "'s";
             rowTime.appendChild(time);
         }
     }
@@ -223,6 +223,7 @@ if ((document.querySelector("title").getAttribute("id") == "Memory")) {
         revealed.style.opacity = "100"; //show card
         if (revealedCards.length == 2) {
             if (revealedCards[0].src == revealedCards[1].src) {
+                revealed.style.opacity = "0";
                 revealedCards = []; //empty the array
                 couples += 1;
                 if (couples == _cardsAmount) {

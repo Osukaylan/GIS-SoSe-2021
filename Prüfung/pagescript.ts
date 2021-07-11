@@ -164,7 +164,7 @@
                 rowName.appendChild(name);
 
                 let time: HTMLSpanElement = <HTMLSpanElement>document.createElement("span");
-                time.innerText = sortedScores[i].time.toString() + " s";
+                time.innerText = sortedScores[i].time.toString() + "'s";
                 rowTime.appendChild(time);
             }
         }
@@ -299,6 +299,7 @@
 
             if (revealedCards.length == 2) {
                 if (revealedCards[0].src == revealedCards[1].src) {
+                    revealed.style.opacity = "0";
                     revealedCards = []; //empty the array
                     couples += 1;
 
