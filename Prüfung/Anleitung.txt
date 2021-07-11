@@ -1,0 +1,11 @@
+-	"scripts": {
+    	"start": "node Prüfung/server.js"
+  	}, 
+	muss ausgeführt werden.
+-	zum ausführen entweder eigene heroku url nehmen, sowie mongodb(muss man 		dann aber selber mit images füllen) oder meine mongodb und heroku lassen.
+-	eigentlich kann jede html benutzt werden, zur uebersichtlichkeit bitte
+	index.html verwenden.
+-	man kann es mit live server ausführen, aber bilder werden dann nicht
+	geladen.
+
+GitHub.io link: https://osukaylan.github.io/GIS-SoSe-2021/Prüfung/index.html
