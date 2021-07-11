@@ -133,7 +133,7 @@
 
         async function displayAllScores(): Promise<void> {
 
-            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com/scoreDisplay";
+            let url: RequestInfo = "https://kapitel3gissose2021.herokuapp.com";
             //let url: RequestInfo = "http://localhost:8100"; //local testings
             url += "/scoreDisplay"; 
             let response: Response = await fetch(url);
